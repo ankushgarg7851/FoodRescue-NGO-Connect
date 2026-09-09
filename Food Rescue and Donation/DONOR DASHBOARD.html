@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodRescue</title>
+    <meta name="description" content="Food donation dashboard and surplus edible food listing page." />
+    <meta property="og:title" content="FoodRescue" />
+    <meta property="og:description" content="Food donation dashboard and surplus edible food listing page." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/index.css" />
+
+    <style>
+      /* Pure CSS Styling */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: #FAF8F5;
+        color: #1E293B;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Navbar */
+      .navbar {
+        width: 100%;
+        background-color: #FFFFFF;
+        border-bottom: 1px solid #F1F5F9;
+        height: 72px;
+      }
+
+      .navbar-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 32px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .brand-icon {
+        width: 32px;
+        height: 32px;
+        background-color: #146C65;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFFFFF;
+      }
+
+      .brand-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #146C65;
+        letter-spacing: -0.3px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        list-style: none;
+      }
+
+      .nav-item a {
+        text-decoration: none;
+        font-size: 14.5px;
+        color: #64748B;
+        font-weight: 500;
+        transition: color 0.15s ease;
+      }
+
+      .nav-item.active a {
+        color: #146C65;
+        font-weight: 700;
+      }
+
+      .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #D2F2EB;
+        color: #146C65;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .user-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: #1E293B;
+      }
+
+      /* Main Content */
+      .main-container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 40px 32px 80px;
+      }
+
+      .page-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1E293B;
+        letter-spacing: -0.5px;
+        margin-bottom: 24px;
+      }
+
+      /* Metric Cards Grid */
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 36px;
+      }
+
+      .metric-card {
+        background-color: #DEF4F0;
+        border-radius: 12px;
+        padding: 24px 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .metric-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #146C65;
+      }
+
+      .metric-value {
+        font-size: 32px;
+        font-weight: 700;
+        color: #146C65;
+        margin-top: 14px;
+        letter-spacing: -0.5px;
+        line-height: 1.15;
+      }
+
+      /* Donation Form Card */
+      .form-card {
+        background-color: #FFFFFF;
+        border-radius: 16px;
+        border: 1px solid #F1F5F9;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+        padding: 40px;
+      }
+
+      .form-header {
+        margin-bottom: 28px;
+      }
+
+      .form-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #1E293B;
+        letter-spacing: -0.3px;
+      }
+
+      .form-subtitle {
+        font-size: 13.5px;
+        color: #64748B;
+        margin-top: 6px;
+        font-weight: 400;
+      }
+
+      /* Form Fields */
+      .form-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        margin-bottom: 22px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 22px;
+      }
+
+      .form-grid-2 .form-group {
+        margin-bottom: 0;
+      }
+
+      .form-label {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: #1E293B;
+        margin-bottom: 8px;
+      }
+
+      .input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 12px 16px;
+        background-color: #FCFCFD;
+        border: 1px solid #E2E8F0;
+        border-radius: 8px;
+        font-size: 14px;
+        font-family: inherit;
+        color: #334155;
+        outline: none;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      .form-input::placeholder {
+        color: #94A3B8;
+      }
+
+      .form-input:focus {
+        border-color: #146C65;
+        box-shadow: 0 0 0 2px rgba(20, 108, 101, 0.12);
+      }
+
+      .form-select-container {
+        position: relative;
+        width: 100%;
+      }
+
+      .form-select {
+        appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+        padding-right: 40px;
+        background-color: #FCFCFD;
+      }
+
+      .select-chevron {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #146C65;
+      }
+
+      .suffix-text {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 13px;
+        font-weight: 600;
+        color: #146C65;
+        pointer-events: none;
+      }
+
+      .input-icon {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #146C65;
+      }
+
+      .form-textarea {
+        resize: none;
+        min-height: 84px;
+        line-height: 1.5;
+      }
+
+      /* Submit Button */
+      .form-actions {
+        margin-top: 10px;
+      }
+
+      .btn-submit {
+        background-color: #146C65;
+        color: #FFFFFF;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        padding: 13px 26px;
+        cursor: pointer;
+        transition: background-color 0.15s ease;
+      }
+
+      .btn-submit:hover {
+        background-color: #0F5852;
+      }
+
+      /* Responsive Rules */
+      @media (max-width: 860px) {
+        .metrics-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .form-grid-2 {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .form-card {
+          padding: 24px;
+        }
+
+        .main-container {
+          padding: 24px 16px 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Navigation Header -->
+    <header class="navbar" id="main-header">
+      <div class="navbar-container">
+        <!-- Logo -->
+        <a href="#donate" class="brand" id="brand-logo">
+          <div class="brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v2"></path>
+              <rect x="4" y="5" width="16" height="15" rx="5"></rect>
+              <path d="M9 10a3 3 0 0 0 6 0"></path>
+            </svg>
+          </div>
+          <span class="brand-title">FoodRescue</span>
+        </a>
+
+        <!-- Center Nav Links -->
+        <ul class="nav-links" id="main-nav">
+          <li class="nav-item"><a href="#home">Home</a></li>
+          <li class="nav-item"><a href="#about">About</a></li>
+          <li class="nav-item active"><a href="#donate">Donate</a></li>
+          <li class="nav-item"><a href="#impact">Impact</a></li>
+          <li class="nav-item"><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Right User Profile -->
+        <div class="user-profile" id="profile-badge">
+          <div class="avatar">W</div>
+          <span class="user-name">Welcome, Ravi!</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Page Body -->
+    <main class="main-container" id="content">
+      <!-- Title -->
+      <h1 class="page-title" id="page-heading">Your Donations</h1>
+
+      <!-- Metric Cards -->
+      <section class="metrics-grid" id="stats-overview">
+        <!-- Card 1 -->
+        <div class="metric-card" id="card-total">
+          <span class="metric-label">Total Donations</span>
+          <span class="metric-value">24</span>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="metric-card" id="card-meals">
+          <span class="metric-label">Meals Saved</span>
+          <span class="metric-value">1,200 servings</span>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="metric-card" id="card-active">
+          <span class="metric-label">Active Pickups</span>
+          <span class="metric-value">3 active</span>
+        </div>
+      </section>
+
+      <!-- Food Donation Form Card -->
+      <section class="form-card" id="donation-card">
+        <div class="form-header">
+          <h2 class="form-title" id="form-heading">Add New Food Donation</h2>
+          <p class="form-subtitle" id="form-subtext">List your surplus edible food simply. Vetted local NGOs will be notified instantly.</p>
+        </div>
+
+        <form id="donation-form" onsubmit="return false;">
+          <!-- Row 1: Food Name & Type -->
+          <div class="form-grid-2">
+            <div class="form-group" id="grp-food-name">
+              <label for="food-name" class="form-label">Food Name / Description</label>
+              <input
+                type="text"
+                id="food-name"
+                class="form-input"
+                placeholder="e.g. Vegetable Biryani &amp; Raita"
+                value="e.g. Vegetable Biryani &amp; Raita"
+              />
+            </div>
+
+            <div class="form-group" id="grp-food-type">
+              <label for="food-type" class="form-label">Food Type</label>
+              <div class="form-select-container">
+                <select id="food-type" class="form-input form-select">
+                  <option selected>Cooked Meals</option>
+                  <option>Packaged Food</option>
+                  <option>Raw Produce / Vegetables</option>
+                  <option>Bakery &amp; Bread</option>
+                  <option>Dairy Products</option>
+                </select>
+                <div class="select-chevron">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Quantity & Pickup Window -->
+          <div class="form-grid-2">
+            <div class="form-group" id="grp-quantity">
+              <label for="quantity" class="form-label">Quantity (Servings / Meals)</label>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="quantity"
+                  class="form-input"
+                  placeholder="e.g. 50"
+                  value="e.g. 50"
+                  style="padding-right: 80px;"
+                />
+                <span class="suffix-text">servings</span>
+              </div>
+            </div>
+
+            <div class="form-group" id="grp-pickup-window">
+              <label for="pickup-window" class="form-label">Available Pick-up Window (Date &amp; Time)</label>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="pickup-window"
+                  class="form-input"
+                  placeholder="Select date and time window"
+                  value="Select date and time window"
+                  style="padding-right: 44px; color: #94A3B8;"
+                />
+                <div class="input-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3: Pick-up Location / Address -->
+          <div class="form-group" id="grp-location">
+            <label for="pickup-location" class="form-label">Pick-up Location / Address</label>
+            <input
+              type="text"
+              id="pickup-location"
+              class="form-input"
+              value="Ravi's Bistro, Block C, 4th Avenue, Downtown"
+            />
+          </div>
+
+          <!-- Row 4: Additional Notes / Allergen Alerts -->
+          <div class="form-group" id="grp-notes">
+            <label for="additional-notes" class="form-label">Additional Notes / Allergen Alerts</label>
+            <textarea
+              id="additional-notes"
+              class="form-input form-textarea"
+              rows="3"
+            >Packed in clean, insulated food-grade containers. Vegetarian. Contains milk/dairy.</textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-actions" id="grp-submit">
+            <button type="button" class="btn-submit" id="btn-submit-donation">Submit Donation</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
+
+

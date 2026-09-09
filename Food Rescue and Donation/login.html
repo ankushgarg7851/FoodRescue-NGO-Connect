@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodRescue - Community Food Donation</title>
+    <meta name="description" content="FoodRescue Community webpage layout design." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div id="root">
+      <!-- Top and Left Blue Guide Lines from Screenshot -->
+      <div class="figma-frame-top-line"></div>
+      <div class="figma-frame-left-line"></div>
+
+      <!-- Navigation Header -->
+      <header class="navbar-header">
+        <div class="navbar-container">
+          <!-- Logo -->
+          <a href="#" class="brand-logo">
+            <div class="brand-logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
+                <path d="M4 11h16v3a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6v-3z"></path>
+                <path d="M2 11h2"></path>
+                <path d="M20 11h2"></path>
+                <path d="M9 7c.8-1.5 2-2 3-2s2.2.5 3 2"></path>
+              </svg>
+            </div>
+            <span class="brand-logo-text">FoodRescue</span>
+          </a>
+
+          <!-- Navigation Links -->
+          <ul class="nav-links-list">
+            <li><a href="#" class="nav-item-link">Home</a></li>
+            <li><a href="#" class="nav-item-link">About</a></li>
+            <li><a href="#" class="nav-item-link">Donate</a></li>
+            <li><a href="#" class="nav-item-link">Impact</a></li>
+            <li><a href="#" class="nav-item-link">Contact</a></li>
+          </ul>
+
+          <!-- Action Button -->
+          <button class="nav-login-btn" type="button">Login / Sign Up</button>
+        </div>
+      </header>
+
+      <!-- Main Content Canvas -->
+      <main class="main-canvas">
+        <div class="layout-grid">
+          
+          <!-- Left Section with Blue Dashed Boundary -->
+          <section class="selection-box-left">
+            <h1 class="hero-main-title">
+              Welcome to the<br>
+              FoodRescue Community
+            </h1>
+            <p class="hero-lead-text">
+              Login to schedule a donor pickup, match with local food surplus, or log volunteer delivery metrics.
+            </p>
+            <div class="crate-image-card">
+              <img 
+                src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=85&w=900&auto=format&fit=crop" 
+                alt="Wooden crate with artisan bread and fresh apples"
+              />
+            </div>
+          </section>
+
+          <!-- Right Login Card with Blue Dashed Boundary -->
+          <section class="selection-box-right">
+            <div class="login-card">
+              <h2 class="login-card-title">Welcome Back</h2>
+              <p class="login-card-subtitle">Please select your role and enter your details.</p>
+
+              <!-- Role Selector Tabs -->
+              <div class="role-tabs-container">
+                <button class="role-tab role-tab-active" type="button">Food Donor Login</button>
+                <button class="role-tab role-tab-inactive" type="button">NGO Login</button>
+              </div>
+
+              <!-- Static Form -->
+              <form onsubmit="return false;">
+                <div class="field-group">
+                  <label class="field-label">Email Address</label>
+                  <input 
+                    type="email" 
+                    class="field-input" 
+                    placeholder="e.g., restaurant@gmail.com" 
+                    readonly 
+                    tabindex="-1"
+                  />
+                </div>
+
+                <div class="field-group">
+                  <label class="field-label">Password</label>
+                  <div class="password-input-box">
+                    <input 
+                      type="password" 
+                      class="field-input" 
+                      placeholder="••••••••••••" 
+                      readonly 
+                      tabindex="-1"
+                    />
+                    <span class="show-password-text">Show</span>
+                  </div>
+                </div>
+
+                <button class="login-submit-button" type="button">Login</button>
+
+                <a href="#" class="forgot-password-link">Forgot Password?</a>
+
+                <p class="signup-footer-text">
+                  Don't have an account?
+                  <a href="#" class="signup-action-link">Sign Up</a>
+                </p>
+              </form>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
