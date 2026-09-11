@@ -1,0 +1,531 @@
+/* ==========================================================================
+   FoodRescue - Pure CSS Stylesheet
+   ========================================================================== */
+
+:root {
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --bg-color: #FAF8F5;
+  --text-main: #1E293B;
+  --text-muted: #64748B;
+  --text-subtle: #94A3B8;
+  
+  --primary: #0F766E;
+  --primary-dark: #0A584E;
+  --primary-light: #E6F7F4;
+  --primary-border: #CCF0E8;
+  
+  --accent-orange: #F39C12;
+  --accent-orange-hover: #E67E22;
+  
+  --badge-warning-bg: #FEF3C7;
+  --badge-warning-text: #D97706;
+  
+  --card-bg: #FFFFFF;
+  --card-border: #E2E8F0;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
+  
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+}
+
+/* Reset & Base Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input, button, select {
+  font-family: inherit;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* ==========================================================================
+   Navigation Header
+   ========================================================================== */
+.header {
+  width: 100%;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--card-border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  background-color: var(--primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+}
+
+.brand-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.brand-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.3px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+  padding-bottom: 4px;
+}
+
+.nav-links a:hover {
+  color: var(--text-main);
+}
+
+.nav-links a.active {
+  color: var(--primary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary);
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  background-color: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-greeting {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   Main Content Layout
+   ========================================================================== */
+.main-content {
+  padding-top: 36px;
+  padding-bottom: 60px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.5px;
+  margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   Summary Stat Cards
+   ========================================================================== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background-color: #E7F6F3;
+  border: 1px solid #D5EFEA;
+  border-radius: var(--radius-xl);
+  padding: 22px 24px;
+}
+
+.stat-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0E7A6B;
+  margin-bottom: 6px;
+  letter-spacing: -0.1px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: -0.4px;
+}
+
+/* ==========================================================================
+   Search & Filter Bar
+   ========================================================================== */
+.filter-bar {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 36px;
+}
+
+.search-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  background-color: #FFFFFF;
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-subtle);
+  flex-shrink: 0;
+}
+
+.search-field input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  color: var(--text-main);
+  background: transparent;
+}
+
+.search-field input::placeholder {
+  color: var(--text-subtle);
+}
+
+.filter-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  background-color: #FFFFFF;
+  font-size: 13px;
+  color: var(--text-main);
+  cursor: default;
+  min-width: 170px;
+}
+
+.filter-dropdown svg {
+  width: 15px;
+  height: 15px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Surplus Food Grid
+   ========================================================================== */
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 18px;
+  letter-spacing: -0.3px;
+}
+
+.feeds-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.food-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.food-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.category-tag {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  letter-spacing: -0.1px;
+}
+
+.distance-text {
+  font-size: 12px;
+  color: var(--text-subtle);
+}
+
+.food-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+
+.donor-text {
+  font-size: 12px;
+  color: var(--text-subtle);
+  margin-bottom: 20px;
+}
+
+.food-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+}
+
+.food-details .highlight-quantity {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.food-details .highlight-window {
+  font-weight: 600;
+  color: #0F172A;
+}
+
+.btn-request {
+  width: 100%;
+  background-color: var(--accent-orange);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 11px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: default;
+  transition: background-color 0.15s ease;
+  text-align: center;
+}
+
+.btn-request:hover {
+  background-color: var(--accent-orange-hover);
+}
+
+/* ==========================================================================
+   Pickup / Distribution Tracking Table
+   ========================================================================== */
+.tracking-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  box-shadow: var(--card-shadow);
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tracking-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+}
+
+.table-head-row {
+  background-color: #F8FAFC;
+}
+
+.table-head-row th {
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+.table-head-row th:first-child {
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+}
+
+.table-head-row th:last-child {
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+  text-align: right;
+}
+
+.table-head-row th.text-center {
+  text-align: center;
+}
+
+.tracking-table tbody tr {
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.tracking-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tracking-table td {
+  padding: 16px;
+  font-size: 13px;
+}
+
+.cell-item {
+  font-weight: 600;
+  color: #0F172A;
+}
+
+.cell-donor {
+  color: var(--text-muted);
+}
+
+.cell-time {
+  color: var(--text-muted);
+}
+
+.cell-status {
+  text-align: center;
+}
+
+.badge-status {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.badge-status.status-confirmed,
+.badge-status.status-completed {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.badge-status.status-en-route {
+  background-color: var(--badge-warning-bg);
+  color: var(--badge-warning-text);
+}
+
+.cell-action {
+  text-align: right;
+}
+
+.action-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.action-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 960px) {
+  .feeds-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .feeds-grid {
+    grid-template-columns: 1fr;
+  }
+}
