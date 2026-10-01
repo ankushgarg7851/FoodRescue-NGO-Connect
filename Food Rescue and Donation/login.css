@@ -1,166 +1,372 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>FoodRescue - Login</title>
-
-    <link rel="stylesheet" href="login2.CSS">
-</head>
-
-<body>
-
-    <!-- Navigation -->
-    <header class="navbar">
-
-        <div class="logo">
-            <span class="logo-icon">♧</span>
-            <span>FoodRescue</span>
-        </div>
-
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Donate</a>
-            <a href="#">Impact</a>
-            <a href="#">Contact</a>
-        </nav>
-
-        <button class="top-button">Login / Sign Up</button>
-
-    </header>
+/* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 
-    <!-- Main Content -->
-    <main class="main">
-
-        <section class="intro">
-
-            <h1>
-                Welcome to the<br>
-                FoodRescue Community
-            </h1>
-
-            <p>
-                Login to schedule a donor pickup,
-                match with local food surplus,
-                or log volunteer delivery metrics.
-            </p>
-
-            <img
-                src="https://images.unsplash.com/photo-1509440159596-0249088772ff"
-                alt="Food donation"
-            >
-
-        </section>
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #faf8f5;
+    color: #1e293b;
+}
 
 
-        <!-- Login -->
-        <section class="login-section">
+/* ---------------- NAVBAR ---------------- */
 
-            <div class="login-card">
+.navbar {
+    height: 60px;
+    background-color: white;
 
-                <h2>Welcome Back</h2>
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-                <p class="subtitle">
-                    Please select your role and enter your details.
-                </p>
+    padding: 0 60px;
 
-
-                <div class="roles">
-                    <button>Food Donor Login</button>
-                    <button>NGO Login</button>
-                </div>
+    border-bottom: 1px solid #eeeeee;
+}
 
 
-                <form>
+/* Logo */
 
-                    <label for="email">Email Address</label>
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="e.g., restaurant@gmail.com"
-                    >
+    color: #0e6e66;
+    font-size: 19px;
+    font-weight: bold;
+}
 
+.logo-icon {
+    background-color: #0e6e66;
+    color: white;
 
-                    <label for="password">Password</label>
-
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="••••••••••••"
-                    >
-
-
-                    <button class="login-button" type="submit">
-                        Login
-                    </button>
-
-                    <a href="#" class="forgot">
-                        Forgot Password?
-                    </a>
-
-                    <p class="signup">
-                        Don't have an account?
-                        <a href="#">Sign Up</a>
-                    </p>
-
-                </form>
-
-            </div>
-
-        </section>
-
-    </main>
+    padding: 5px 8px;
+    border-radius: 5px;
+}
 
 
-    <!-- Footer -->
-    <footer>
+/* Navigation */
 
-        <div class="footer-column">
+nav {
+    display: flex;
+    gap: 30px;
+}
 
-            <h3>♧ FoodRescue</h3>
+nav a {
+    color: #4a5568;
+    text-decoration: none;
+    font-size: 14px;
+}
 
-            <p>
-                Connecting surplus edible food from local
-                businesses directly to compassionate NGOs
-                who serve communities in need.
-            </p>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h3>Platform</h3>
-
-            <a href="#">Home</a>
-            <a href="#">About Mission</a>
-            <a href="#">Donate Surplus</a>
-            <a href="#">NGO Partnerships</a>
-
-        </div>
+nav a:hover {
+    color: #0e6e66;
+}
 
 
-        <div class="footer-column">
+/* Top Button */
 
-            <h3>Contact & Support</h3>
+.top-button {
+    background-color: #0e6e66;
+    color: white;
 
-            <p>support@foodrescue.org</p>
-            <p>+1 (555) 382-9901</p>
-            <p>Figma Student Project Showcase</p>
+    border: none;
+    border-radius: 5px;
 
-        </div>
+    padding: 10px 20px;
+
+    cursor: pointer;
+}
 
 
-        <div class="copyright">
-            © 2026 FoodRescue NGO Connect. Developed for social impact.
-        </div>
+/* ---------------- MAIN ---------------- */
 
-    </footer>
+.main {
+    max-width: 1000px;
+    margin: 0 auto;
 
-</body>
-</html>
+    min-height: 650px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+
+    padding: 50px 20px;
+}
+
+
+/* Left Section */
+
+.intro h1 {
+    color: #0e6e66;
+
+    font-size: 36px;
+    line-height: 1.2;
+
+    margin-bottom: 20px;
+}
+
+.intro p {
+    color: #556973;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+.intro img {
+    width: 100%;
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+}
+
+
+/* ---------------- LOGIN CARD ---------------- */
+
+.login-section {
+    display: flex;
+    justify-content: center;
+}
+
+
+.login-card {
+    background-color: white;
+
+    width: 100%;
+
+    padding: 35px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+.login-card h2 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+
+.subtitle {
+    color: #718096;
+    font-size: 13px;
+
+    margin-bottom: 22px;
+}
+
+
+/* Role Buttons */
+
+.roles {
+    display: flex;
+
+    margin-bottom: 22px;
+}
+
+.roles button {
+    width: 50%;
+
+    padding: 11px;
+
+    border: none;
+
+    background-color: #faf8f5;
+
+    cursor: pointer;
+}
+
+.roles button:first-child {
+    background-color: #0e6e66;
+    color: white;
+
+    border-radius: 5px;
+}
+
+
+/* ---------------- FORM ---------------- */
+
+form label {
+    display: block;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    margin-bottom: 6px;
+}
+
+
+form input {
+    width: 100%;
+
+    padding: 11px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+}
+
+
+form input:focus {
+    outline: 2px solid #0e6e66;
+}
+
+
+/* Login Button */
+
+.login-button {
+    width: 100%;
+
+    padding: 12px;
+
+    background-color: #0e6e66;
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+
+.login-button:hover,
+.top-button:hover {
+    background-color: #0a5650;
+}
+
+
+/* Forgot Password */
+
+.forgot {
+    display: block;
+
+    text-align: center;
+
+    margin-top: 18px;
+
+    color: #0e6e66;
+
+    text-decoration: none;
+
+    font-size: 13px;
+}
+
+
+/* Sign Up */
+
+.signup {
+    text-align: center;
+
+    margin-top: 15px;
+
+    color: #718096;
+
+    font-size: 13px;
+}
+
+.signup a {
+    color: #0e6e66;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+
+/* ---------------- FOOTER ---------------- */
+
+footer {
+    background-color: #22343d;
+
+    color: white;
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1.5fr;
+
+    gap: 50px;
+
+    padding: 50px 60px;
+}
+
+
+.footer-column h3 {
+    margin-bottom: 15px;
+}
+
+
+.footer-column p,
+.footer-column a {
+    display: block;
+
+    color: #b8c2c7;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin-bottom: 8px;
+
+    text-decoration: none;
+}
+
+
+.footer-column a:hover {
+    color: white;
+}
+
+
+.copyright {
+    grid-column: 1 / -1;
+
+    border-top: 1px solid #3c4a51;
+
+    padding-top: 20px;
+
+    color: #9aa7ad;
+
+    font-size: 12px;
+}
+
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .main {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+    }
+
+    .copyright {
+        grid-column: auto;
+    }
+}
