@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read donor feedback and reviews of FoodRescue.">
+  <title>Ratings & Reviews | FoodRescue</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="reviews-figma-colors.css">
+  <script src="reviews.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-container">
+      <a class="brand-logo" href="HOME.html" aria-label="FoodRescue home"><span class="brand-icon">♡</span><span>FoodRescue</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <a href="HOME.html">Home</a>
+        <a href="ABOUT.html">About</a>
+        <a href="DONOR DASHBOARD.html">Donate</a>
+        <a href="NGO DASHBOARD.html">NGO Dashboard</a>
+        <a class="active" href="reviews.html">Ratings &amp; Reviews</a>
+      </nav>
+      <a class="nav-cta" href="login.html">Login / Sign Up</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container hero-inner">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> COMMUNITY VOICES</div>
+        <h1>Trust grows when<br><span>good work is shared.</span></h1>
+        <p>Read what donors say about FoodRescue. Reviews share community experiences and help us build trust through transparency.</p>
+        <a class="button button-light" href="#reviews">Read community reviews <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-circle circle-one"></div><div class="art-circle circle-two"></div>
+        <div class="quote-card"><span class="quote-mark">“</span><p>Small acts of kindness can serve a whole community.</p><div class="quote-stars">★★★★★</div></div>
+        <div class="floating-heart">♡</div>
+      </div>
+    </section>
+
+    <section class="container trust-section" aria-label="Review summary">
+      <div class="section-heading">
+        <div><p class="eyebrow">TRANSPARENCY MATTERS</p><h2>Community trust, at a glance</h2></div>
+        <p class="section-note">A clear view of community feedback and experiences.</p>
+      </div>
+      <div class="summary-grid">
+        <article class="summary-card overall-card">
+          <p class="summary-label">Overall community rating</p>
+          <div class="rating-line"><strong id="averageRating">4.8</strong><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></div>
+          <p class="muted"><span id="reviewCount">4</span> reviews shown</p>
+          <div class="rating-meter"><span id="overallMeter"></span></div>
+          <small>Demo content — replace with verified platform reviews.</small>
+        </article>
+        <article class="summary-card rating-breakdown">
+          <h3>Rating breakdown</h3>
+          <div class="breakdown-row"><span>5 <span class="star-symbol">★</span></span><div class="bar"><span style="width:75%"></span></div><span id="fiveCount">3</span></div>
+          <div class="breakdown-row"><span>4 <span class="star-symbol">★</span></span><div class="bar"><span style="width:25%"></span></div><span id="fourCount">1</span></div>
+          <div class="breakdown-row"><span>3 <span class="star-symbol">★</span></span><div class="bar"><span style="width:0%"></span></div><span id="threeCount">0</span></div>
+          <div class="breakdown-row"><span>2 <span class="star-symbol">★</span></span><div class="bar"><span style="width:0%"></span></div><span id="twoCount">0</span></div>
+          <div class="breakdown-row"><span>1 <span class="star-symbol">★</span></span><div class="bar"><span style="width:0%"></span></div><span id="oneCount">0</span></div>
+        </article>
+        <article class="summary-card impact-card">
+          <div class="impact-icon">♡</div><h3>Every review has an impact</h3>
+          <p>Your feedback helps FoodRescue improve donation coordination and support communities more effectively.</p>
+          <a href="#write-review" class="text-link">Share your experience <span>→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-heading reviews-heading">
+          <div><p class="eyebrow">REAL EXPERIENCES MATTER</p><h2>Ratings &amp; reviews</h2><p class="heading-description">Browse feedback about FoodRescue, donation coordination, communication, and food distribution.</p></div>
+          <label class="sort-control">Sort by
+            <select id="sortReviews" aria-label="Sort reviews">
+              <option value="recent">Most recent</option><option value="high">Highest rated</option><option value="low">Lowest rated</option>
+            </select>
+          </label>
+        </div>
+        <div class="filter-row" role="group" aria-label="Filter reviews by rating">
+          <button class="filter-chip selected" data-rating="all">All reviews <span id="allFilterCount">4</span></button>
+          <button class="filter-chip" data-rating="5">★★★★★ 5 star</button>
+          <button class="filter-chip" data-rating="4">★★★★ 4 star</button>
+          <button class="filter-chip" data-rating="3">★★★ 3 star</button>
+          <span class="filter-spacer"></span><span class="review-count-label" id="visibleCount">Showing 4 reviews</span>
+        </div>
+        <div class="review-grid" id="reviewList" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState" hidden><div>♡</div><h3>No reviews match this filter</h3><p>Try another rating or clear the filter.</p><button class="button button-outline" id="clearFilter">Show all reviews</button></div>
+        <p class="demo-notice">Note: The names and reviews on this page are illustrative sample content for the website prototype, not verified testimonials.</p>
+      </div>
+    </section>
+
+    <section class="write-section" id="write-review">
+      <div class="container write-layout">
+        <div class="write-copy"><p class="eyebrow">YOUR VOICE COUNTS</p><h2>Have you worked with FoodRescue?</h2><p>Share your experience with FoodRescue to help our team improve. Please keep feedback respectful and specific.</p><div class="write-points"><span>✓ Honest feedback</span><span>✓ Helpful to the community</span><span>✓ Takes less than a minute</span></div></div>
+        <form class="review-form" id="reviewForm">
+          <h3>Write a review</h3><p class="form-subtitle">Fields marked with * are required.</p>
+          <label for="reviewerName">Your name *</label><input id="reviewerName" name="reviewerName" type="text" maxlength="60" placeholder="Enter your name" required>
+          <div class="reviewing-ngo"><span>Reviewing</span><strong>♡ FoodRescue</strong></div>
+          <fieldset class="star-picker"><legend>Your rating *</legend><div class="interactive-stars" role="radiogroup" aria-label="Choose a rating">
+            <button type="button" class="pick-star" data-value="1" aria-label="1 star" aria-checked="false" role="radio">★</button><button type="button" class="pick-star" data-value="2" aria-label="2 stars" aria-checked="false" role="radio">★</button><button type="button" class="pick-star" data-value="3" aria-label="3 stars" aria-checked="false" role="radio">★</button><button type="button" class="pick-star" data-value="4" aria-label="4 stars" aria-checked="false" role="radio">★</button><button type="button" class="pick-star" data-value="5" aria-label="5 stars" aria-checked="false" role="radio">★</button>
+          </div><span id="ratingHelp" class="rating-help">Select 1 to 5 stars</span><input type="hidden" id="ratingValue" name="rating" required></fieldset>
+          <label for="reviewText">Your review *</label><textarea id="reviewText" name="reviewText" rows="4" maxlength="600" placeholder="Tell us about communication, collection, or community impact..." required></textarea>
+          <div class="form-bottom"><span id="charCount">0 / 600</span><button class="button button-primary" type="submit">Submit review <span>→</span></button></div>
+          <p class="form-message" id="formMessage" role="status"></p>
+          <p class="privacy-note">Prototype only: reviews are saved in this browser on this device. A live website needs a server and moderation to publish reviews across users.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a class="footer-brand" href="HOME.html"><span class="brand-icon">♡</span> FoodRescue</a><p>FoodRescue connects surplus food with communities that need it.</p><span>© 2026 FoodRescue NGO Connect</span></div></footer>
+</body>
+</html>
