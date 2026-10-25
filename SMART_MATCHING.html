@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Food Matching | FoodRescue</title>
+    <link rel="stylesheet" href="smart-matching.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <p class="tagline">Smart Food Matching</p>
+        <h1>Find Food. Rescue More.</h1>
+        <p class="subtitle">
+            Connect with nearby donors and turn surplus food into meals for your community.
+        </p>
+        <div class="location">
+            📍 Matching near<br>
+            <strong>Hope Foundation · Central District</strong>
+        </div>
+    </header>
+
+    <!-- Statistics -->
+    <section class="stats">
+        <div class="stat-card">
+            <p>Available Donations</p>
+            <h2>6 nearby</h2>
+            <small>Within your 10 km radius</small>
+        </div>
+
+        <div class="stat-card">
+            <p>Urgent Pickups</p>
+            <h2>2 need rescue</h2>
+            <small>Pickup ends within 2 hours</small>
+        </div>
+
+        <div class="stat-card">
+            <p>Food Collected</p>
+            <h2>890 meals</h2>
+            <small>Rescued by your foundation</small>
+        </div>
+
+        <div class="stat-card">
+            <p>Partner Donors</p>
+            <h2>42 verified</h2>
+            <small>Working together for good</small>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="section-heading">
+            <div>
+                <h2>Discover Food Near You</h2>
+                <p>Six local donations. One shared mission. Find your next pickup on the map.</p>
+            </div>
+            <span class="distance">⌕ Within 10 km</span>
+        </div>
+
+        <div class="map">
+            <div class="road road-one"></div>
+            <div class="road road-two"></div>
+
+            <span class="place place-one">📍 Golden Crust Bakery</span>
+            <span class="place place-two">📍 Corporate Canteen</span>
+            <span class="place place-three">📍 Grand Palace Hotel</span>
+            <span class="place place-four">📍 Wholesale Harvest</span>
+            <span class="place place-five">📍 Royal India Bistro</span>
+            <span class="place place-six">📍 Greens Salad Bar</span>
+
+            <div class="map-popup">
+                <strong>Grand Palace Hotel</strong>
+                <p>Basmati Rice & Dal Combo</p>
+                <b>80 servings · 1.2 km away</b>
+                <small>Pickup by 5:00 PM today</small>
+            </div>
+
+            <div class="foundation">● Hope Foundation</div>
+
+            <div class="map-legend">
+                <span>● Available donation</span>
+                <span>● Urgent pickup</span>
+                <span>○ Your foundation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filters -->
+    <section class="filters">
+        <input type="text" placeholder="⌕ Search by dishes, donors or locations...">
+
+        <select>
+            <option>All Food Types</option>
+            <option>Cooked Meals</option>
+            <option>Bakery Items</option>
+            <option>Packaged Food</option>
+            <option>Raw Ingredients</option>
+        </select>
+
+        <select>
+            <option>Within 10 km</option>
+            <option>Within 5 km</option>
+            <option>Within 20 km</option>
+        </select>
+
+        <select>
+            <option>Pickup: Any time</option>
+            <option>Urgent Pickup</option>
+            <option>Available Today</option>
+            <option>Available Tomorrow</option>
+        </select>
+    </section>
+
+    <!-- Food Cards -->
+    <section class="food-section">
+        <div class="section-heading">
+            <div>
+                <h2>Available Food Nearby</h2>
+                <p>6 donations from verified local partners</p>
+            </div>
+            <span class="result-text">Showing all nearby donations</span>
+        </div>
+
+        <div class="food-grid">
+
+            <div class="food-card">
+                <div class="card-top">
+                    <span class="food-type">Cooked Meals</span>
+                    <span>1.2 km away</span>
+                </div>
+                <h3>Basmati Rice & Dal Combo</h3>
+                <p>Listed by: Grand Palace Hotel</p>
+                <div class="food-details">
+                    Quantity: <strong>80 servings</strong><br>
+                    <small>Pickup: Today, 3:00 PM – 5:00 PM</small>
+                </div>
+                <p class="urgent">◷ Pickup by 5:00 PM today</p>
+                <button type="button">Request Food</button>
+            </div>
+
+            <div class="food-card">
+                <div class="card-top">
+                    <span class="food-type">Bakery Items</span>
+                    <span>3.5 km away</span>
+                </div>
+                <h3>Freshly Baked Breads & Pastries</h3>
+                <p>Listed by: Golden Crust Bakery</p>
+                <div class="food-details">
+                    Quantity: <strong>40 units</strong><br>
+                    <small>Pickup: Today, 6:00 PM – 8:00 PM</small>
+                </div>
+                <p class="pickup-time">◷ Pickup by 8:00 PM today</p>
+                <button type="button">Request Food</button>
+            </div>
+
+            <div class="food-card">
+                <div class="card-top">
+                    <span class="food-type">Packaged Food</span>
+                    <span>2.8 km away</span>
+                </div>
+                <h3>Cold Sandwiches & Fruit Boxes</h3>
+                <p>Listed by: Corporate Canteen Services</p>
+                <div class="food-details">
+                    Quantity: <strong>120 servings</strong><br>
+                    <small>Pickup: Today, 2:00 PM – 4:00 PM</small>
+                </div>
+                <p class="urgent">◷ Pickup by 4:00 PM today</p>
+                <button type="button">Request Food</button>
+            </div>
+
+            <div class="food-card">
+                <div class="card-top">
+                    <span class="food-type">Packaged Food</span>
+                    <span>4.1 km away</span>
+                </div>
+                <h3>Pre-Packaged Salads</h3>
+                <p>Listed by: Greens Salad Bar</p>
+                <div class="food-details">
+                    Quantity: <strong>30 servings</strong><br>
+                    <small>Pickup: Tomorrow, 9:00 AM – 11:00 AM</small>
+                </div>
+                <p class="pickup-time">◷ Pickup by 11:00 AM tomorrow</p>
+                <button type="button">Request Food</button>
+            </div>
+
+            <div class="food-card">
+                <div class="card-top">
+                    <span class="food-type">Cooked Meals</span>
+                    <span>5.0 km away</span>
+                </div>
+                <h3>Vegetable Curry & Roti</h3>
+                <p>Listed by: Royal India Bistro</p>
+                <div class="food-details">
+                    Quantity: <strong>50 servings</strong><br>
+                    <small>Pickup: Today, 9:00 PM – 10:30 PM</small>
+                </div>
+                <p class="pickup-time">◷ Pickup by 10:30 PM today</p>
+                <button type="button">Request Food</button>
+            </div>
+
+            <div class="food-card">
+                <div class="card-top">
+                    <span class="food-type">Raw Ingredients</span>
+                    <span>7.2 km away</span>
+                </div>
+                <h3>Apples, Oranges & Bananas</h3>
+                <p>Listed by: Wholesale Harvest Corp</p>
+                <div class="food-details">
+                    Quantity: <strong>200 lbs surplus</strong><br>
+                    <small>Pickup: Today, 3:00 PM – 7:00 PM</small>
+                </div>
+                <p class="pickup-time">◷ Pickup by 7:00 PM today</p>
+                <button type="button">Request Food</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>🍎 FoodRescue</h3>
+                <p>
+                    Connecting surplus edible food from local businesses
+                    directly to compassionate NGOs who serve communities in need.
+                </p>
+            </div>
+
+            <div>
+                <h4>Platform</h4>
+                <p>Home</p>
+                <p>About Mission</p>
+                <p>Donate Surplus</p>
+                <p>NGO Partnerships</p>
+            </div>
+
+            <div>
+                <h4>Contact & Support</h4>
+                <p>support@foodrescue-connect.org</p>
+                <p>+1 (555) 382-9901</p>
+                <p>Figma Student Project Showcase</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2026 FoodRescue NGO Connect. Developed for Social Impact.
+        </div>
+    </footer>
+
+</body>
+</html>
