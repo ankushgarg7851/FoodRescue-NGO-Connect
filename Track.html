@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Your Donation | FoodRescue</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="track.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="../index.html" class="brand">
+      <span class="brand-icon">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M16 9.5C12.5 5.2 7 7.6 7 13.1c0 5.2 5.1 11.4 9 11.4s9-6.2 9-11.4c0-5.5-5.5-7.9-9-3.6Z"
+                fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 9.5c-.2-3.5 2.1-5.5 5.2-5.8"
+                fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span>FoodRescue</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../donate/index.html">Donate</a>
+      <a href="../activity/index.html" class="active">My Activity</a>
+      <a href="../impact/index.html">Impact</a>
+    </nav>
+
+    <div class="profile" title="Hope Foundation">W</div>
+  </header>
+
+  <main class="container">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="../dashboard/index.html">Dashboard</a>
+      <span>/</span>
+      <a href="../activity/index.html">My Activity</a>
+      <span>/</span>
+      <span>Track Donation</span>
+    </div>
+
+    <!-- Page heading -->
+    <section class="page-heading">
+      <h1>Track Your Donation</h1>
+      <p>Follow your food donation from pickup to delivery.</p>
+
+      <div class="status-row">
+        <span class="donation-id">DONATION #FR-2026-024</span>
+        <span class="status">IN TRANSIT</span>
+      </div>
+    </section>
+
+    <!-- Donation information and route -->
+    <section class="overview">
+
+      <article class="donation-card">
+        <h2>Donation details</h2>
+
+        <div class="details-columns">
+
+          <div class="food-details">
+            <h3>Freshly prepared meals</h3>
+            <p>25 meal boxes</p>
+
+            <p class="date">Pickup: 24 Oct 2026 · 10:30 AM</p>
+            <p class="date">Best before: 24 Oct 2026 · 4:00 PM</p>
+          </div>
+
+          <div class="receiver-details">
+            <p>Receiving organisation</p>
+            <h3>Community Kitchen</h3>
+            <p>Sector 14, community centre</p>
+            <p class="date">Coordinator: Priya S.</p>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- Route illustration matching the reference -->
+      <article class="route-card">
+        <svg class="route-map" viewBox="0 0 440 260" role="img" aria-label="Illustrative pickup and delivery route">
+
+          <rect width="440" height="260" rx="14" fill="#DFF5EF"/>
+
+          <!-- Roads -->
+          <path d="M190 30 V220"
+                stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>
+
+          <path d="M40 105 H405"
+                stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>
+
+          <!-- Route -->
+          <path d="M54 105 H295 V184"
+                fill="none" stroke="#0F8077" stroke-width="4"
+                stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- Pickup -->
+          <circle cx="54" cy="105" r="22" fill="#0F8077"/>
+          <text x="54" y="111" text-anchor="middle"
+                font-family="Poppins, sans-serif" font-size="17"
+                font-weight="600" fill="#FFFFFF">P</text>
+
+          <!-- Delivery -->
+          <circle cx="295" cy="184" r="22" fill="#F5A000"/>
+          <text x="295" y="190" text-anchor="middle"
+                font-family="Poppins, sans-serif" font-size="17"
+                font-weight="600" fill="#FFFFFF">D</text>
+
+          <text x="220" y="242" text-anchor="middle"
+                font-family="Poppins, sans-serif" font-size="13"
+                font-weight="500" fill="#0F8077">Illustrative route</text>
+        </svg>
+      </article>
+
+    </section>
+
+    <!-- Donation journey -->
+    <section class="journey-section">
+      <h2>Donation journey</h2>
+      <p class="section-description">
+        We’ll keep this timeline updated as your donation progresses.
+      </p>
+
+      <div class="timeline-card">
+
+        <div class="timeline-item completed">
+          <div class="marker">✓</div>
+
+          <div class="timeline-copy">
+            <h3>Donation created</h3>
+            <p>Your donation details were submitted successfully.</p>
+          </div>
+
+          <div class="timeline-time">24 Oct · 9:15 AM</div>
+        </div>
+
+        <div class="timeline-item completed">
+          <div class="marker">✓</div>
+
+          <div class="timeline-copy">
+            <h3>Pickup confirmed</h3>
+            <p>A collection volunteer has been assigned.</p>
+          </div>
+
+          <div class="timeline-time">24 Oct · 9:40 AM</div>
+        </div>
+
+        <div class="timeline-item completed">
+          <div class="marker">✓</div>
+
+          <div class="timeline-copy">
+            <h3>Food picked up</h3>
+            <p>The donation was collected and is on its way.</p>
+          </div>
+
+          <div class="timeline-time">24 Oct · 10:30 AM</div>
+        </div>
+
+        <div class="timeline-item pending">
+          <div class="marker">4</div>
+
+          <div class="timeline-copy">
+            <h3>Delivered to organisation</h3>
+            <p>Awaiting confirmation from the receiving organisation.</p>
+          </div>
+
+          <div class="timeline-time in-progress">In progress</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Support banner -->
+    <section class="support-banner">
+      <div class="support-copy">
+        <h2>Need help with this donation?</h2>
+        <p>Contact the FoodRescue team if your pickup or delivery details need to be changed.</p>
+      </div>
+
+      <a href="mailto:support@foodrescue.example" class="support-button">
+        Contact support
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    FoodRescue · Share more. Waste less.
+  </footer>
+
+</body>
+</html>
