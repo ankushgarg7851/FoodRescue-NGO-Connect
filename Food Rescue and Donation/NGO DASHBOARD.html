@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Pure CSS Stylesheet -->
-    <link rel="stylesheet" href="NGOD.css" />
+    <link rel="stylesheet" href="ngo dash.css" />
   </head>
   <body>
     <!-- Top Navigation Header -->
@@ -273,5 +273,60 @@
         </section>
       </div>
     </main>
+ <script>
+  function loadDonations() {
+    const feedsGrid = document.getElementById("feeds-card-grid");
+    const donations = JSON.parse(localStorage.getItem("donations")) || [];
+
+    donations.forEach((donation) => {
+      // Prevent adding duplicate cards if re-rendered
+      if (document.getElementById(`donation-${donation.id}`)) return;
+
+      const card = document.createElement("article");
+      card.id = `donation-${donation.id}`;
+      card.className = "food-card";
+      card.innerHTML = `
+            <div>
+                <div class="food-card-header">
+                    <span class="category-tag">${donation.category}</span>
+                    <span class="distance-text">${donation.location || "Nearby"}</span>
+                </div>
+                <h3 class="food-title">${donation.title}</h3>
+                <p class="donor-text">Listed by: ${donation.donor}</p>
+                <div class="food-details">
+                    <p>Quantity: <span class="highlight-quantity">${donation.quantity}</span></p>
+                    <p>Pickup Window: <span class="highlight-window">${donation.pickupWindow}</span></p>
+                </div>
+            </div>
+            <button type="button" class="btn-request">Request Food</button>
+        `;
+
+      // Insert new donation at the top of the grid
+      feedsGrid.prepend(card);
+    });
+  }
+
+  // Handle Request Food Button Click
+  document.addEventListener("click", function (event) {
+    if (event.target && event.target.classList.contains("btn-request")) {
+      const button = event.target;
+
+      // Update button content to tick and requested text
+      button.innerHTML = "&#10004; Requested"; // ✓ Requested
+      button.classList.add("btn-requested");
+      button.disabled = true;
+    }
+  });
+
+  // Load donations when page opens
+  document.addEventListener("DOMContentLoaded", loadDonations);
+
+  // Listen for updates from the Donor Dashboard in real-time
+  window.addEventListener("storage", function (event) {
+    if (event.key === "donations") {
+      loadDonations();
+    }
+  });
+</script>
   </body>
 </html>
