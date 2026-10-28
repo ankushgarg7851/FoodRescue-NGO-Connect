@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Stories - FoodRescue</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================
+           Brand Variables & Reset
+           ========================================== */
+        :root {
+            --brand-teal: #0e7971;
+            --brand-teal-hover: #0b635c;
+            --brand-mint: #e6f7f2;
+            --brand-warm-bg: #fdfbf7;
+            --brand-heading: #0d3b36;
+            --brand-muted: #5a716e;
+            --text-dark: #2d3748;
+            --text-gray: #64748b;
+            --border-color: #e2e8f0;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(14, 121, 113, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, input {
+            font-family: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--brand-teal);
+            border-radius: 4px;
+        }
+
+        /* ==========================================
+           Navbar / Header
+           ========================================== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--brand-teal);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .logo-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--brand-teal);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-gray);
+        }
+
+        .nav-links a {
+            transition: var(--transition);
+            padding-bottom: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-teal);
+        }
+
+        .nav-links a.active {
+            color: var(--brand-teal);
+            font-weight: 700;
+            border-bottom: 2px solid var(--brand-teal);
+        }
+
+        .btn-primary {
+            background-color: var(--brand-teal);
+            color: var(--white);
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 8px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--brand-teal-hover);
+        }
+
+        /* ==========================================
+           Hero Section
+           ========================================== */
+        .hero-section {
+            background-color: var(--brand-mint);
+            padding: 60px 0;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .badge-hero {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--brand-teal);
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-content h1 {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--brand-heading);
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--brand-muted);
+        }
+
+        /* ==========================================
+           Toolbar & Filters
+           ========================================== */
+        .main-content {
+            padding: 40px 0 80px;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover {
+            background-color: var(--brand-mint);
+            color: var(--brand-teal);
+        }
+
+        .filter-btn.active {
+            background-color: var(--brand-teal);
+            color: var(--white);
+        }
+
+        .search-box {
+            position: relative;
+            min-width: 260px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .search-box input {
+            width: 100%;
+            background-color: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 16px 10px 40px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--brand-teal);
+            background-color: var(--white);
+        }
+
+        /* ==========================================
+           Featured Card
+           ========================================== */
+        .featured-wrapper {
+            margin-bottom: 50px;
+        }
+
+        .featured-card {
+            background-color: var(--brand-warm-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .featured-image {
+            position: relative;
+            min-height: 320px;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background-color: var(--brand-teal);
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .featured-details {
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--brand-muted);
+            margin-bottom: 12px;
+        }
+
+        .category-tag {
+            background-color: var(--brand-mint);
+            color: var(--brand-teal);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .featured-details h2 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--brand-heading);
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .featured-details p {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .author-row {
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: var(--brand-teal);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .author-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--brand-heading);
+        }
+
+        .author-role {
+            font-size: 11px;
+            color: var(--text-gray);
+        }
+
+        .read-link {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--brand-teal);
+        }
+
+        /* ==========================================
+           Blog Grid & Cards
+           ========================================== */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .blog-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-image {
+            position: relative;
+            height: 190px;
+            background-color: #f1f5f9;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--brand-teal);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .blog-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--brand-heading);
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .blog-card p {
+            font-size: 13px;
+            color: var(--text-gray);
+            margin-bottom: 16px;
+        }
+
+        .card-footer {
+            padding-top: 14px;
+            border-top: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .author-by {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-gray);
+        }
+
+        .card-link {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--brand-teal);
+        }
+
+        /* ==========================================
+           CTA Banner
+           ========================================== */
+        .cta-section {
+            padding: 20px 0 60px;
+        }
+
+        .cta-card {
+            background-color: var(--brand-teal);
+            border-radius: 20px;
+            padding: 40px;
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cta-text h2 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .cta-text p {
+            font-size: 14px;
+            color: #ccfbf1;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cta-form input {
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            width: 260px;
+            outline: none;
+        }
+
+        .btn-cta {
+            background-color: var(--white);
+            color: var(--brand-teal);
+            border: none;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .featured-card { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+            .cta-card { flex-direction: column; text-align: center; }
+            .cta-form { flex-direction: column; width: 100%; }
+            .cta-form input { width: 100%; }
+        }
+        @media (max-width: 600px) {
+            .blog-grid { grid-template-columns: 1fr; }
+            .nav-links, .nav-action { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo-brand">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                </div>
+                <span class="logo-text">FoodRescue</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Donate</a>
+                <a href="#">Impact</a>
+                <a href="#" class="active">Blog</a>
+                <a href="#">Contact</a>
+            </nav>
+
+            <div class="nav-action">
+                <a href="#" class="btn-primary">Login / Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge-hero">Stories & Insights</span>
+                <h1>Stories of Food Rescue, Community & Sustainability</h1>
+                <p>Explore how edible surplus food is turning into nutritious meals, empowering local communities, and fighting environmental waste together.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <main class="main-content">
+        <div class="container">
+
+            <div class="toolbar">
+                <div class="category-filters">
+                    <button class="filter-btn active">All Stories</button>
+                    <button class="filter-btn">Food Rescue</button>
+                    <button class="filter-btn">NGO Stories</button>
+                    <button class="filter-btn">Sustainability</button>
+                    <button class="filter-btn">Community Impact</button>
+                </div>
+
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" placeholder="Search articles...">
+                </div>
+            </div>
+
+            <!-- Featured Card -->
+            <div class="featured-wrapper">
+                <div class="featured-card">
+                    <div class="featured-image">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&auto=format&fit=crop" alt="Children enjoying meal">
+                        <span class="featured-badge">Featured Article</span>
+                    </div>
+                    <div class="featured-details">
+                        <div>
+                            <div class="card-meta">
+                                <span class="category-tag">Community Impact</span>
+                                <span>•</span>
+                                <span>5 min read</span>
+                            </div>
+                            <h2>How Surplus Food Drives are Nourishing 10,000+ Children Every Month</h2>
+                            <p>Bridge the gap between surplus meal providers and local shelters. Learn how our technology connects hotels and canteens directly with nearby NGOs in real-time.</p>
+                        </div>
+                        
+                        <div class="author-row">
+                            <div class="author-info">
+                                <div class="author-avatar">HF</div>
+                                <div>
+                                    <h4 class="author-name">Hope Foundation</h4>
+                                    <span class="author-role">FoodRescue Partner</span>
+                                </div>
+                            </div>
+                            <a href="#" class="read-link">Read Article &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid -->
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop" alt="Volunteers sorting food">
+                        <span class="image-tag">Food Rescue</span>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <div class="card-meta">
+                                <span>Sept 10, 2026</span> • <span>4 min read</span>
+                            </div>
+                            <h3>5 Easy Ways Restaurants Can Reduce Daily Food Waste</h3>
+                            <p>Simple operational changes and surplus donation workflows can save thousands of kilograms of edible food each year.</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="author-by">By Priya Sharma</span>
+                            <a href="#" class="card-link">Read More &gt;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=800&auto=format&fit=crop" alt="Fresh produce Market">
+                        <span class="image-tag">Sustainability</span>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <div class="card-meta">
+                                <span>Sept 05, 2026</span> • <span>6 min read</span>
+                            </div>
+                            <h3>Understanding Methane Emissions: Why Food Landfills Matter</h3>
+                            <p>Discover how keeping edible food in community kitchens instead of landfills drastically reduces greenhouse gas footprints.</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="author-by">By EcoResearch Team</span>
+                            <a href="#" class="card-link">Read More &gt;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=800&auto=format&fit=crop" alt="Serving warm food to seniors">
+                        <span class="image-tag">NGO Stories</span>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <div class="card-meta">
+                                <span>Aug 28, 2026</span> • <span>5 min read</span>
+                            </div>
+                            <h3>Serving Seniors: Dignity and Warm Meals in Old Age Homes</h3>
+                            <p>Care is what they cherish most. Here is how partner canteens make sure healthy elder-friendly food reaches senior shelters every evening.</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="author-by">By Rahul Verma</span>
+                            <a href="#" class="card-link">Read More &gt;</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-text">
+                    <h2>Zero Waste. Active Feeding.</h2>
+                    <p>Subscribe to our monthly newsletter to receive inspiring stories and food waste tips.</p>
+                </div>
+                <form class="cta-form" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Enter your email address">
+                    <button type="submit" class="btn-cta">Subscribe Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodRescue - Available Food Nearby</title>
+    <meta name="description" content="Available food donation and rescue tracking platform for community food distribution and hunger relief." />
+    <meta property="og:title" content="FoodRescue - Available Food Nearby" />
+    <meta property="og:description" content="Available food donation and rescue tracking platform for community food distribution and hunger relief." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Pure CSS Stylesheet -->
+    <link rel="stylesheet" href="NGOD.css" />
+  </head>
+  <body>
+    <!-- Top Navigation Header -->
+    <header id="main-header" class="header">
+      <div class="container header-inner">
+        <!-- Brand Logo -->
+        <div id="brand-logo" class="brand">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24">
+              <rect width="18" height="14" x="3" y="6" rx="3" />
+              <path d="M3 10h18" />
+              <path d="M10 6v4" />
+              <path d="M14 6v4" />
+            </svg>
+          </div>
+          <span class="brand-title">FoodRescue</span>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav id="navbar-links" aria-label="Main Navigation">
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#donate">Donate</a></li>
+            <li><a href="#impact" class="active">Impact</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- User Greeting Badge -->
+        <div id="user-greeting-badge" class="user-badge">
+          <div class="avatar">W</div>
+          <span class="user-greeting">Welcome, Hope Foundation!</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="main-page-content" class="main-content">
+      <div class="container">
+        <!-- Page Title -->
+        <h1 id="page-heading" class="page-title">Available Food Nearby</h1>
+
+        <!-- Summary Metric Cards -->
+        <section id="metrics-summary-section" class="stats-grid" aria-label="Key Metrics">
+          <div id="metric-food-collected" class="stat-card">
+            <p class="stat-label">Food Collected</p>
+            <p class="stat-value">890 meals total</p>
+          </div>
+          <div id="metric-active-requests" class="stat-card">
+            <p class="stat-label">Active Requests</p>
+            <p class="stat-value">5 requests pending</p>
+          </div>
+          <div id="metric-partner-donors" class="stat-card">
+            <p class="stat-label">Partner Donors</p>
+            <p class="stat-value">42 verified merchants</p>
+          </div>
+        </section>
+
+        <!-- Search and Filter Bar -->
+        <section id="search-filter-section" class="filter-bar" aria-label="Search and Filters">
+          <!-- Search Input Box -->
+          <div id="search-input-wrapper" class="search-field">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <input 
+              id="search-input" 
+              type="text" 
+              placeholder="Search by dishes or locations..." 
+              readonly
+            />
+          </div>
+
+          <!-- Food Type Filter -->
+          <div id="filter-type-dropdown" class="filter-dropdown">
+            <span>All Food Types</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </div>
+
+          <!-- Distance Filter -->
+          <div id="filter-distance-dropdown" class="filter-dropdown">
+            <span>Within 10 km</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </div>
+        </section>
+
+        <!-- Surplus Food Feeds Grid -->
+        <section id="surplus-feeds-section" aria-labelledby="surplus-feeds-title">
+          <h2 id="surplus-feeds-title" class="section-title">Surplus Food Feeds</h2>
+
+          <div id="feeds-card-grid" class="feeds-grid">
+            <!-- Card 1 -->
+            <article id="card-basmati-rice" class="food-card">
+              <div>
+                <div class="food-card-header">
+                  <span class="category-tag">Cooked Meals</span>
+                  <span class="distance-text">1.2 km away</span>
+                </div>
+                <h3 class="food-title">Basmati Rice &amp; Dal Combo</h3>
+                <p class="donor-text">Listed by: Grand Palace Hotel</p>
+                <div class="food-details">
+                  <p>Quantity: <span class="highlight-quantity">80 servings</span></p>
+                  <p>Pickup Window: <span class="highlight-window">Today, 3:00 PM – 5:00 PM</span></p>
+                </div>
+              </div>
+              <button id="btn-request-1" type="button" class="btn-request">Request Food</button>
+            </article>
+
+            <!-- Card 2 -->
+            <article id="card-fresh-breads" class="food-card">
+              <div>
+                <div class="food-card-header">
+                  <span class="category-tag">Bakery Items</span>
+                  <span class="distance-text">3.5 km away</span>
+                </div>
+                <h3 class="food-title">Freshly Baked Breads &amp; Pastries</h3>
+                <p class="donor-text">Listed by: Golden Crust Bakery</p>
+                <div class="food-details">
+                  <p>Quantity: <span class="highlight-quantity">40 units</span></p>
+                  <p>Pickup Window: <span class="highlight-window">Today, 6:00 PM – 8:00 PM</span></p>
+                </div>
+              </div>
+              <button id="btn-request-2" type="button" class="btn-request">Request Food</button>
+            </article>
+
+            <!-- Card 3 -->
+            <article id="card-sandwiches-boxes" class="food-card">
+              <div>
+                <div class="food-card-header">
+                  <span class="category-tag">Packaged Food</span>
+                  <span class="distance-text">2.8 km away</span>
+                </div>
+                <h3 class="food-title">Cold Sandwiches &amp; Fruit Boxes</h3>
+                <p class="donor-text">Listed by: Corporate Canteen Services</p>
+                <div class="food-details">
+                  <p>Quantity: <span class="highlight-quantity">120 servings</span></p>
+                  <p>Pickup Window: <span class="highlight-window">Today, 2:00 PM – 4:00 PM</span></p>
+                </div>
+              </div>
+              <button id="btn-request-3" type="button" class="btn-request">Request Food</button>
+            </article>
+
+            <!-- Card 4 -->
+            <article id="card-packaged-salads" class="food-card">
+              <div>
+                <div class="food-card-header">
+                  <span class="category-tag">Packaged Food</span>
+                  <span class="distance-text">4.1 km away</span>
+                </div>
+                <h3 class="food-title">Pre-Packaged Salads</h3>
+                <p class="donor-text">Listed by: Greens Salad Bar</p>
+                <div class="food-details">
+                  <p>Quantity: <span class="highlight-quantity">30 servings</span></p>
+                  <p>Pickup Window: <span class="highlight-window">Tomorrow, 11:00 AM</span></p>
+                </div>
+              </div>
+              <button id="btn-request-4" type="button" class="btn-request">Request Food</button>
+            </article>
+
+            <!-- Card 5 -->
+            <article id="card-vegetable-curry" class="food-card">
+              <div>
+                <div class="food-card-header">
+                  <span class="category-tag">Cooked Meals</span>
+                  <span class="distance-text">5.0 km away</span>
+                </div>
+                <h3 class="food-title">Vegetable Curry &amp; Roti</h3>
+                <p class="donor-text">Listed by: Royal India Bistro</p>
+                <div class="food-details">
+                  <p>Quantity: <span class="highlight-quantity">50 servings</span></p>
+                  <p>Pickup Window: <span class="highlight-window">Today, 9:00 PM – 10:30 PM</span></p>
+                </div>
+              </div>
+              <button id="btn-request-5" type="button" class="btn-request">Request Food</button>
+            </article>
+
+            <!-- Card 6 -->
+            <article id="card-apples-oranges" class="food-card">
+              <div>
+                <div class="food-card-header">
+                  <span class="category-tag">Raw Ingredients</span>
+                  <span class="distance-text">7.2 km away</span>
+                </div>
+                <h3 class="food-title">Apples, Oranges &amp; Bananas</h3>
+                <p class="donor-text">Listed by: Wholesale Harvest Corp</p>
+                <div class="food-details">
+                  <p>Quantity: <span class="highlight-quantity">200 lbs surplus</span></p>
+                  <p>Pickup Window: <span class="highlight-window">Flexible Pickup</span></p>
+                </div>
+              </div>
+              <button id="btn-request-6" type="button" class="btn-request">Request Food</button>
+            </article>
+          </div>
+        </section>
+
+        <!-- Your Pickup / Distribution Tracking Section -->
+        <section id="tracking-section" class="tracking-card" aria-labelledby="tracking-title">
+          <h2 id="tracking-title" class="section-title">Your Pickup / Distribution Tracking</h2>
+
+          <div class="table-wrapper">
+            <table id="distribution-tracking-table" class="tracking-table">
+              <thead>
+                <tr class="table-head-row">
+                  <th scope="col" style="width: 28%;">Food Donation Item</th>
+                  <th scope="col" style="width: 25%;">Donor Partner</th>
+                  <th scope="col" style="width: 18%;">Pickup Scheduled</th>
+                  <th scope="col" class="text-center" style="width: 14%;">Status</th>
+                  <th scope="col" style="width: 15%;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="row-tracking-1">
+                  <td class="cell-item">Warm Biryani Casserole</td>
+                  <td class="cell-donor">Taj Residency Banquets</td>
+                  <td class="cell-time">Today, 3:30 PM</td>
+                  <td class="cell-status">
+                    <span class="badge-status status-confirmed">Confirmed</span>
+                  </td>
+                  <td class="cell-action">
+                    <a href="#view-map" class="action-link">View Navigation Maps &rarr;</a>
+                  </td>
+                </tr>
+                <tr id="row-tracking-2">
+                  <td class="cell-item">Fresh Fruit Salad Platters</td>
+                  <td class="cell-donor">Organica Market</td>
+                  <td class="cell-time">Today, 5:45 PM</td>
+                  <td class="cell-status">
+                    <span class="badge-status status-en-route">En Route</span>
+                  </td>
+                  <td class="cell-action">
+                    <a href="#view-map" class="action-link">View Navigation Maps &rarr;</a>
+                  </td>
+                </tr>
+                <tr id="row-tracking-3">
+                  <td class="cell-item">Assorted Pastry Platters</td>
+                  <td class="cell-donor">Bakehouse Gourmet</td>
+                  <td class="cell-time">Yesterday, Completed</td>
+                  <td class="cell-status">
+                    <span class="badge-status status-completed">Completed</span>
+                  </td>
+                  <td class="cell-action">
+                    <a href="#view-map" class="action-link">View Navigation Maps &rarr;</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

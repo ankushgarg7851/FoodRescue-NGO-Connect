@@ -1,94 +1,143 @@
-// Get HTML elements
-const form = document.querySelector("form");
+
+const form = document.getElementById("login-form");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
-const roles = document.querySelectorAll(".roles button");
-const message = document.createElement("p");
+const roleButtons = document.querySelectorAll(".role-button");
+const message = document.getElementById("message");
+const signupLink = document.getElementById("signup-link");
+const forgotLink = document.querySelector(".forgot");
 
-// Add message area
-message.style.marginTop = "15px";
-message.style.fontSize = "14px";
-message.style.textAlign = "center";
-form.appendChild(message);
+let selectedRole = "donor";
 
 // Show message
-function showMessage(text, color) {
+function showMessage(text, color = "#0e6e66") {
     message.textContent = text;
     message.style.color = color;
 }
 
-// Select login role
-roles.forEach(function(button) {
-    button.addEventListener("click", function() {
-        roles.forEach(function(role) {
-            role.style.backgroundColor = "#faf8f5";
-            role.style.color = "#1e293b";
+// Select Donor or NGO
+roleButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        selectedRole = button.dataset.role;
+
+        roleButtons.forEach(function (item) {
+            item.classList.toggle("active", item === button);
         });
 
-        button.style.backgroundColor = "#0e6e66";
-        button.style.color = "white";
-        showMessage(button.textContent + " selected", "#0e6e66");
+        signupLink.href = selectedRole === "ngo"
+            ? "signup%20page.html?role=ngo"
+            : "signup%20page.html?role=donor";
+
+        email.placeholder = selectedRole === "ngo"
+            ? "Enter your NGO email"
+            : "e.g., restaurant@gmail.com";
+
+        showMessage(
+            selectedRole === "ngo"
+                ? "NGO Login selected"
+                : "Food Donor Login selected"
+        );
     });
 });
 
-// Handle login form submission
-form.addEventListener("submit", function(event) {
+// Login using signup account details
+form.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const userEmail = email.value.trim();
-    const userPassword = password.value.trim();
+    const userEmail = email.value.trim().toLowerCase();
+    const userPassword = password.value;
 
-    if (userEmail === "" || userPassword === "") {
+    if (!userEmail || !userPassword) {
         showMessage("Please fill in all fields.", "red");
+        return;
     }
-    else if (!email.checkValidity()) {
-        showMessage("Please enter a valid email.", "red");
+
+    if (!email.checkValidity()) {
+        showMessage("Please enter a valid email address.", "red");
+        return;
     }
-    else if (userPassword.length < 6) {
-        showMessage("Password must be at least 6 characters.", "red");
+
+    // Get accounts created on signup page
+    let users;
+
+    try {
+        users = JSON.parse(localStorage.getItem("users") || "[]");
+    } catch (error) {
+        showMessage("Could not read saved accounts.", "red");
+        return;
     }
-    else {
-        showMessage("Login form submitted successfully!", "green");
+
+    if (!Array.isArray(users)) {
+        showMessage("Saved account data is invalid.", "red");
+        return;
+    }
+
+    // Match email, password and role
+    const user = users.find(function (account) {
+        return (
+            account &&
+            typeof account.email === "string" &&
+            typeof account.password === "string" &&
+            account.email.trim().toLowerCase() === userEmail &&
+            account.password === userPassword &&
+            account.role === selectedRole
+        );
+    });
+
+    // If account does not exist
+    if (!user) {
+        showMessage(
+            "Account not found. Check your details and selected role, or sign up first.",
+            "red"
+        );
+        return;
+    }
+
+    // Save logged-in user information
+    localStorage.setItem(
+        "loggedInUser",
+        JSON.stringify({
+            name: user.name,
+            email: user.email,
+            role: user.role
+        })
+    );
+
+    showMessage("Login successful! Opening your dashboard...", "green");
+
+    // Redirect to the correct dashboard
+    if (user.role === "donor") {
+        window.location.href = "DONOR%20DASHBOARD.html";
+    } else if (user.role === "ngo") {
+        window.location.href = "NGO%20DASHBOARD.html";
     }
 });
 
-// Forgot password option
-document.querySelector(".forgot").addEventListener("click", function(event) {
+// Forgot password
+forgotLink.addEventListener("click", function (event) {
     event.preventDefault();
 
-    if (email.value.trim() === "") {
-        showMessage("Please enter your email first.", "red");
+    if (!email.value.trim()) {
+        showMessage("Please enter your email address first.", "red");
+        email.focus();
+        return;
     }
-    else if (!email.checkValidity()) {
-        showMessage("Enter a valid email address.", "red");
+
+    if (!email.checkValidity()) {
+        showMessage("Please enter a valid email address.", "red");
+        return;
     }
-    else {
-        showMessage("Password reset option selected.", "#0e6e66");
-    }
+
+    showMessage(
+        "Password reset is not connected yet. Please contact your project administrator."
+    );
 });
 
-// Sign up option
-document.querySelector(".signup a").addEventListener("click", function(event) {
-    event.preventDefault();
-    showMessage("Sign Up page will be available soon.", "#0e6e66");
+// Clear messages when user edits fields
+email.addEventListener("input", function () {
+    message.textContent = "";
 });
 
-// Top login button
-document.querySelector(".top-button").addEventListener("click", function() {
-    form.scrollIntoView({ behavior: "smooth", block: "center" });
-    email.focus();
-});
-
-// Show message when email changes
-email.addEventListener("input", function() {
-    if (email.value.trim() !== "") {
-        message.textContent = "";
-    }
-});
-
-// Show message when password changes
-password.addEventListener("input", function() {
-    if (password.value.trim() !== "") {
-        message.textContent = "";
-    }
+password.addEventListener("input", function () {
+    message.textContent = "";
 });

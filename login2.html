@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodRescue - Login</title>
+    <link rel="stylesheet" href="login2.CSS">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="HOME.html" class="logo">
+        <span class="logo-icon">♧</span>
+        <span>FoodRescue</span>
+    </a>
+
+    <nav>
+        <a href="HOME.html">Home</a>
+        <a href="ABOUT.html">About</a>
+        <a href="FoodRescue-Ratings-Reviews.html">Reviews</a>
+        <a href="BLOG.html">Blog</a>
+        <a href="signup%20page.html">Sign Up</a>
+        <a href="NGO%20DASHBOARD.html">NGO Dashboard</a>
+    </nav>
+
+    <button class="top-button" type="button"
+        onclick="document.querySelector('.login-card').scrollIntoView({behavior:'smooth'})">
+        Login
+    </button>
+</header>
+
+<main class="main">
+
+    <section class="intro">
+        <h1>Welcome to the<br>FoodRescue Community</h1>
+
+        <p>
+            Login to schedule a donor pickup, connect with local food
+            surplus, or manage food donations and NGO deliveries.
+        </p>
+
+        <img
+            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80"
+            alt="Fresh food for donation">
+    </section>
+
+    <section class="login-section">
+        <div class="login-card">
+
+            <h2>Welcome Back</h2>
+            <p class="subtitle">
+                Select your role and enter your login details.
+            </p>
+
+            <div class="roles">
+                <button type="button"
+                    class="role-button active"
+                    data-role="donor">
+                    Food Donor Login
+                </button>
+
+                <button type="button"
+                    class="role-button"
+                    data-role="ngo">
+                    NGO Login
+                </button>
+            </div>
+
+            <form id="login-form">
+
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="e.g., restaurant@gmail.com"
+                    autocomplete="email"
+                    required>
+
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required>
+
+                <button class="login-button" type="submit">
+                    Login
+                </button>
+
+                <a href="#" class="forgot">Forgot Password?</a>
+
+                <p class="signup">
+                    Don't have an account?
+                    <a href="signup%20page.html?role=donor"
+                       id="signup-link">
+                        Sign Up
+                    </a>
+                </p>
+
+                <p id="message" role="status" aria-live="polite"></p>
+
+            </form>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-column">
+        <h3>♧ FoodRescue</h3>
+        <p>
+            Connecting surplus edible food from local businesses
+            with NGOs serving communities in need.
+        </p>
+    </div>
+
+    <div class="footer-column">
+        <h3>Platform</h3>
+        <a href="HOME.html">Home</a>
+        <a href="ABOUT.html">About Mission</a>
+        <a href="signup%20page.html?role=donor">Donate Surplus</a>
+        <a href="signup%20page.html?role=ngo">NGO Partnerships</a>
+        <a href="BLOG.html">Blog</a>
+        <a href="FoodRescue-Ratings-Reviews.html">Reviews</a>
+    </div>
+
+    <div class="footer-column">
+        <h3>Contact &amp; Support</h3>
+        <p>support@foodrescue.org</p>
+        <p>FoodRescue NGO Connect</p>
+        <p>Student Project Showcase</p>
+    </div>
+
+    <div class="copyright">
+        &copy; 2026 FoodRescue NGO Connect. Developed for social impact.
+    </div>
+</footer>
+
+<script src="login.js"></script>
+</body>
+</html>
