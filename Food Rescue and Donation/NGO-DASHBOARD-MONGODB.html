@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodRescue | NGO Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:#0f766e; --primary-dark:#0a584e; --primary-light:#e6f7f4;
+      --bg:#faf8f5; --text:#1e293b; --muted:#64748b; --border:#e2e8f0;
+      --white:#fff; --orange:#e58b13; --red:#b91c1c;
+      --shadow:0 3px 14px rgba(15,23,42,.05);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Plus Jakarta Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+    button,input,select{font:inherit}
+    .header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+    .header-inner{max-width:1180px;margin:auto;min-height:68px;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .brand{font-size:21px;font-weight:800;color:var(--primary);text-decoration:none}
+    .nav{display:flex;gap:20px;flex-wrap:wrap}
+    .nav a{font-size:13px;color:var(--muted);text-decoration:none;font-weight:600}
+    .user{font-size:13px;font-weight:700}
+    main{max-width:1180px;margin:34px auto 60px;padding:0 22px}
+    h1{font-size:29px;margin-bottom:8px}
+    .subtitle{color:var(--muted);font-size:14px;margin-bottom:24px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:24px}
+    .stat{background:#e7f6f3;border:1px solid #d5efea;border-radius:14px;padding:20px 22px}
+    .stat p{font-size:13px;color:var(--primary);font-weight:700}
+    .stat strong{display:block;font-size:27px;color:var(--primary-dark);margin-top:7px}
+    .toolbar{background:white;border:1px solid var(--border);border-radius:12px;padding:13px;display:flex;gap:12px;margin-bottom:27px;box-shadow:var(--shadow)}
+    .toolbar input,.toolbar select{background:white;border:1px solid var(--border);border-radius:8px;padding:11px 12px;color:var(--text);min-width:0}
+    .toolbar input{flex:1}
+    .section-title{font-size:20px;margin-bottom:15px}
+    .food-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:36px}
+    .food-card{background:white;border:1px solid var(--border);border-radius:13px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+    .card-top{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:12px}
+    .tag{background:var(--primary-light);color:var(--primary);padding:4px 9px;border-radius:6px;font-size:11px;font-weight:800}
+    .status{font-size:11px;font-weight:800;color:#166534;background:#dcfce7;padding:4px 9px;border-radius:20px}
+    .food-card h3{font-size:17px;margin-bottom:5px}
+    .donor{font-size:12px;color:var(--muted);margin-bottom:15px}
+    .details{font-size:12px;color:var(--muted);display:grid;gap:7px}
+    .details b{color:var(--text)}
+    .notes{background:#f8fafc;border-radius:7px;padding:8px}
+    .btn{border:0;border-radius:8px;padding:11px 14px;background:var(--orange);color:white;font-weight:800;font-size:13px;cursor:pointer}
+    .btn:hover{filter:brightness(.95)}
+    .btn:disabled{opacity:.55;cursor:wait}
+    .tracking{background:white;border:1px solid var(--border);border-radius:13px;padding:22px;box-shadow:var(--shadow)}
+    .table-wrap{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;min-width:700px}
+    th,td{text-align:left;padding:13px 11px;border-bottom:1px solid #edf0f4;font-size:12px;vertical-align:middle}
+    th{color:var(--muted);background:#f8fafc}
+    .pill{display:inline-block;border-radius:20px;padding:4px 9px;font-weight:800;font-size:11px;background:#e0e7ff;color:#3730a3}
+    .pill.enroute{background:#fef3c7;color:#92400e}
+    .pill.delivered{background:#dcfce7;color:#166534}
+    .empty{grid-column:1/-1;background:white;border:1px dashed #cbd5e1;padding:34px 20px;text-align:center;border-radius:12px;color:var(--muted)}
+    .notice{padding:11px 14px;border-radius:9px;margin-bottom:18px;font-size:13px;display:none}
+    .notice.error{display:block;background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+    .notice.info{display:block;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
+    .refresh{font-size:12px;color:var(--muted);margin:-14px 0 18px}
+    @media(max-width:900px){.food-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:650px){.stats,.food-grid{grid-template-columns:1fr}.toolbar{flex-direction:column}.header-inner{justify-content:center}.nav{justify-content:center}h1{font-size:25px}.tracking{padding:14px}}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="HOME.html">🍃 FoodRescue</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="HOME.html">Home</a>
+        <a href="ABOUT.html">About</a>
+        <a href="blog html and css.html">Blog</a>
+        <a href="reports and analytics.html">Reports &amp; Analytics</a>
+        <a href="FoodRescue-Ratings-Reviews.html">Reviews</a>
+      </nav>
+      <span class="user" id="welcome-user">Welcome, NGO!</span>
+    </div>
+  </header>
+
+  <main>
+    <h1>Available Food Nearby</h1>
+    <p class="subtitle">Browse food donations submitted by donors and request a pickup.</p>
+    <div id="notice" class="notice" role="status"></div>
+
+    <section class="stats" aria-label="Dashboard statistics">
+      <div class="stat"><p>Meals in Active / Completed Donations</p><strong id="metric-meals">0</strong></div>
+      <div class="stat"><p>Active Requests</p><strong id="metric-requests">0</strong></div>
+      <div class="stat"><p>Partner Donors</p><strong id="metric-donors">0</strong></div>
+    </section>
+
+    <div class="toolbar">
+      <input id="search-input" type="search" placeholder="Search food, donor or pickup location..." aria-label="Search donations">
+      <select id="filter-type" aria-label="Filter by food type">
+        <option>All Food Types</option>
+        <option>Cooked Meals</option>
+        <option>Packaged Food</option>
+        <option>Raw Produce / Vegetables</option>
+        <option>Bakery &amp; Bread</option>
+        <option>Dairy Products</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <p class="refresh" id="refresh-status">Connecting to donation database...</p>
+    <section aria-labelledby="available-heading">
+      <h2 class="section-title" id="available-heading">Surplus Food Feeds</h2>
+      <div id="food-cards-grid" class="food-grid">
+        <div class="empty">Loading donations from the database...</div>
+      </div>
+    </section>
+
+    <section class="tracking" id="tracking-section">
+      <h2 class="section-title">Your Pickup / Distribution Tracking</h2>
+      <div class="table-wrap">
+        <table id="distribution-tracking-table">
+          <thead><tr>
+            <th>Food Donation</th><th>Donor Partner</th><th>Pickup Scheduled</th><th>Status</th><th>Claimed By</th>
+          </tr></thead>
+          <tbody id="tracking-body"><tr><td colspan="5" style="text-align:center">No claimed donations yet.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    /*
+      IMPORTANT:
+      Set API_BASE to the prefix used in your server's app.use() statement.
+      If you have app.use("/api/mongo", mongoRoutes), leave this as "/api/mongo".
+      If you mount mongoRoutes at app.use("/api", mongoRoutes), change it to "/api".
+    */
+    const API_BASE = "/api/mongo";
+    const DONATIONS_URL = `${API_BASE}/donations`;
+    const REFRESH_INTERVAL = 5000;
+
+    const $ = id => document.getElementById(id);
+    const grid = $("food-cards-grid");
+    const trackingBody = $("tracking-body");
+    const searchInput = $("search-input");
+    const typeFilter = $("filter-type");
+    const notice = $("notice");
+
+    let allDonations = [];
+    let loading = false;
+    let lastFetchTime = null;
+
+    let currentUser = {};
+    try { currentUser = JSON.parse(localStorage.getItem("loggedInUser")) || {}; }
+    catch (e) { console.warn("Could not read loggedInUser from localStorage", e); }
+
+    const ngoName = currentUser.name || "Hope Foundation";
+    const ngoEmail = currentUser.email || "hope@ngo.org";
+    $("welcome-user").textContent = `Welcome, ${ngoName}!`;
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, ch => ({
+        "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+      })[ch]);
+    }
+
+    function showNotice(message, isError = false) {
+      notice.textContent = message;
+      notice.className = `notice ${isError ? "error" : "info"}`;
+    }
+    function clearNotice() {
+      notice.textContent = "";
+      notice.className = "notice";
+    }
+
+    async function readResponse(response) {
+      const text = await response.text();
+      let data;
+      try { data = text ? JSON.parse(text) : {}; }
+      catch { throw new Error(`Server returned HTTP ${response.status}. The endpoint may be incorrect.`); }
+      if (!response.ok) throw new Error(data.error || data.message || `Request failed (${response.status}).`);
+      return data;
+    }
+
+    function normalizeDonations(payload) {
+      // mongoRoutes.js returns { count, storageSource, donations: [...] }.
+      // This also accepts an API that returns the array directly.
+      if (Array.isArray(payload)) return payload;
+      if (payload && Array.isArray(payload.donations)) return payload.donations;
+      throw new Error("Unexpected API response. Expected an array or an object containing a donations array.");
+    }
+
+    function formatDate(value) {
+      if (!value) return "Flexible Pickup";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return String(value);
+      return date.toLocaleString("en-IN", {
+        day:"numeric", month:"short", year:"numeric", hour:"numeric", minute:"2-digit"
+      });
+    }
+
+    function getId(donation) {
+      return donation.id || donation._id || "";
+    }
+
+    function updateMetrics() {
+      const activeAndCompleted = allDonations.filter(d =>
+        ["Confirmed", "En Route", "Delivered"].includes(d.status)
+      );
+      const meals = activeAndCompleted.reduce((sum, d) => sum + Number(d.quantity || 0), 0);
+      const active = allDonations.filter(d => ["Confirmed", "Requested", "En Route"].includes(d.status)).length;
+      const donors = new Set(allDonations.map(d =>
+        String(d.donorEmail || d.donorName || "").trim().toLowerCase()
+      ).filter(Boolean));
+      $("metric-meals").textContent = meals.toLocaleString("en-IN");
+      $("metric-requests").textContent = active.toLocaleString("en-IN");
+      $("metric-donors").textContent = donors.size.toLocaleString("en-IN");
+    }
+
+    function renderFoodCards() {
+      const term = searchInput.value.trim().toLowerCase();
+      const type = typeFilter.value;
+      const available = allDonations.filter(d => {
+        const searchable = [d.foodName, d.foodType, d.donorName, d.pickupLocation, d.notes]
+          .join(" ").toLowerCase();
+        return (d.status || "Available") === "Available" &&
+          (!term || searchable.includes(term)) &&
+          (type === "All Food Types" || String(d.foodType || "").toLowerCase() === type.toLowerCase());
+      });
+
+      if (!available.length) {
+        grid.innerHTML = `<div class="empty"><strong>No available food donations found.</strong><br>New donor submissions will appear here automatically.</div>`;
+        return;
+      }
+
+      grid.innerHTML = available.map(d => {
+        const id = getId(d);
+        return `
+          <article class="food-card" data-id="${escapeHTML(id)}">
+            <div>
+              <div class="card-top">
+                <span class="tag">${escapeHTML(d.foodType || "Other")}</span>
+                <span class="status">${escapeHTML(d.status || "Available")}</span>
+              </div>
+              <h3>${escapeHTML(d.foodName || "Food donation")}</h3>
+              <p class="donor">Donated by <strong>${escapeHTML(d.donorName || "Community Donor")}</strong></p>
+              <div class="details">
+                <p>Quantity: <b>${Number(d.quantity || 0).toLocaleString("en-IN")} servings</b></p>
+                <p>Pickup location: <b>${escapeHTML(d.pickupLocation || "Not specified")}</b></p>
+                <p>Pickup time: <b>${escapeHTML(formatDate(d.pickupWindow))}</b></p>
+                ${d.donorEmail ? `<p>Donor email: <b>${escapeHTML(d.donorEmail)}</b></p>` : ""}
+                ${d.notes ? `<p class="notes">Notes: ${escapeHTML(d.notes)}</p>` : ""}
+              </div>
+            </div>
+            <button class="btn claim-button" type="button" data-id="${escapeHTML(id)}">Request Food</button>
+          </article>`;
+      }).join("");
+
+      grid.querySelectorAll(".claim-button").forEach(button => {
+        button.addEventListener("click", () => claimDonation(button.dataset.id, button));
+      });
+    }
+
+    function renderTracking() {
+      const claimed = allDonations.filter(d =>
+        ["Confirmed", "Requested", "En Route", "Delivered"].includes(d.status)
+      );
+      if (!claimed.length) {
+        trackingBody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:#64748b;padding:24px">No claimed donations yet. Request an available donation above.</td></tr>`;
+        return;
+      }
+      trackingBody.innerHTML = claimed.map(d => {
+        const status = d.status || "Confirmed";
+        const statusClass = status === "Delivered" ? "delivered" : status === "En Route" ? "enroute" : "";
+        const claimedBy = d.claimedBy && (d.claimedBy.ngoName || d.claimedBy.ngoEmail)
+          ? `${d.claimedBy.ngoName || ""}${d.claimedBy.ngoEmail ? " (" + d.claimedBy.ngoEmail + ")" : ""}`
+          : "—";
+        return `<tr>
+          <td><strong>${escapeHTML(d.foodName || "Food donation")}</strong><br><small>#${escapeHTML(getId(d))} · ${Number(d.quantity || 0)} servings</small></td>
+          <td>${escapeHTML(d.donorName || "Donor")}<br><small>${escapeHTML(d.pickupLocation || "")}</small></td>
+          <td>${escapeHTML(formatDate(d.pickupWindow))}</td>
+          <td><span class="pill ${statusClass}">${escapeHTML(status)}</span></td>
+          <td>${escapeHTML(claimedBy)}</td>
+        </tr>`;
+      }).join("");
+    }
+
+    async function fetchDonations(showErrors = true) {
+      if (loading) return;
+      loading = true;
+      try {
+        const response = await fetch(DONATIONS_URL, {
+          method:"GET", cache:"no-store", headers:{ "Accept":"application/json" }
+        });
+        const payload = await readResponse(response);
+        allDonations = normalizeDonations(payload);
+        updateMetrics();
+        renderFoodCards();
+        renderTracking();
+        lastFetchTime = new Date();
+        $("refresh-status").textContent =
+          `Connected · ${allDonations.length} donation record(s) · Last updated ${lastFetchTime.toLocaleTimeString("en-IN")}`;
+        clearNotice();
+      } catch (error) {
+        console.error("Could not fetch MongoDB donations:", error);
+        $("refresh-status").textContent = "Database connection failed.";
+        if (showErrors) showNotice(`${error.message} Check API_BASE and your Express route mounting.`, true);
+        if (!allDonations.length) {
+          grid.innerHTML = `<div class="empty">Unable to load donations. Check that your backend is running and the MongoDB route is mounted correctly.</div>`;
+        }
+      } finally {
+        loading = false;
+      }
+    }
+
+    async function claimDonation(id, button) {
+      if (!id) {
+        showNotice("This donation does not have an ID. Check the MongoDB Donation schema.", true);
+        return;
+      }
+      if (button) {
+        button.disabled = true;
+        button.textContent = "Requesting...";
+      }
+      try {
+        // This PATCH route is implemented in the supplied mongoRoutes.js.
+        const response = await fetch(`${DONATIONS_URL}/${encodeURIComponent(id)}/status`, {
+          method:"PATCH",
+          headers:{ "Content-Type":"application/json", "Accept":"application/json" },
+          body:JSON.stringify({
+            status:"Confirmed",
+            ngoName,
+            ngoEmail
+          })
+        });
+        const result = await readResponse(response);
+        showNotice(result.message || "Donation successfully requested.");
+        await fetchDonations(false);
+        $("tracking-section").scrollIntoView({ behavior:"smooth", block:"start" });
+      } catch (error) {
+        console.error("Claim failed:", error);
+        showNotice(`Could not request this donation: ${error.message}`, true);
+        if (button) {
+          button.disabled = false;
+          button.textContent = "Request Food";
+        }
+      }
+    }
+
+    searchInput.addEventListener("input", renderFoodCards);
+    typeFilter.addEventListener("change", renderFoodCards);
+
+    fetchDonations();
+    // Poll MongoDB through the Express API so new donor submissions appear without reloading.
+    setInterval(() => fetchDonations(false), REFRESH_INTERVAL);
+  });
+  </script>
+</body>
+</html>
