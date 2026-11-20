@@ -1,0 +1,29 @@
+{
+  "name": "foodrescue-ngo-connect",
+  "version": "1.0.0",
+  "description": "FoodRescue - Surplus Food Recovery & NGO Connect Web Application with Node.js, Express, MongoDB and External APIs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "seed": "node seed.js",
+    "check-db": "node check-db.js"
+  },
+  "keywords": [
+    "foodrescue",
+    "ngo",
+    "express",
+    "mongodb",
+    "nodejs",
+    "surplus-food"
+  ],
+  "author": "FoodRescue Team",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "ejs": "^7.0.2",
+    "express": "^4.21.2",
+    "mongoose": "^8.8.2"
+  }
+}

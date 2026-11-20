@@ -1,0 +1,608 @@
+
+/* ---------- Global Styles ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #0e766e;
+    --primary-dark: #095b55;
+    --primary-light: #e8f6f3;
+    --text: #24333b;
+    --muted: #64748b;
+    --white: #ffffff;
+    --background: #f6faf8;
+    --border: #e2ebe7;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+}
+
+a {
+    transition: 0.25s ease;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ---------- Header / Navigation ---------- */
+.navbar {
+    min-height: 75px;
+    padding: 14px 5%;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary);
+    font-size: 22px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 9px;
+    font-size: 25px;
+}
+
+/* Center navigation links */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    flex: 1;
+    margin-left: 40px;
+}
+
+.nav-links a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 5px;
+}
+
+.menu-toggle {
+    display: none;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 7px;
+    padding: 8px 12px;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+/* ---------- About Heading ---------- */
+.about-heading {
+    text-align: center;
+    padding: 65px 20px 40px;
+    background: linear-gradient(180deg, #eaf8f4, #ffffff);
+}
+
+.eyebrow,
+.section-label {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.about-heading h1 {
+    color: #173d38;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.2;
+    margin: 12px 0;
+}
+
+.about-heading > p:last-child {
+    max-width: 650px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 16px;
+}
+
+/* ---------- Banner ---------- */
+.banner {
+    width: 90%;
+    max-width: 1250px;
+    min-height: 390px;
+    margin: 20px auto 60px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #174c43;
+}
+
+.banner img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(4, 38, 34, 0.88),
+        rgba(4, 38, 34, 0.48),
+        rgba(4, 38, 34, 0.05)
+    );
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+    padding: 65px 7%;
+    color: var(--white);
+}
+
+.banner-tag {
+    display: inline-block;
+    padding: 5px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.banner-content h2 {
+    font-size: clamp(34px, 5vw, 48px);
+    line-height: 1.2;
+    margin: 18px 0 12px;
+}
+
+.banner-content p {
+    max-width: 450px;
+    margin-bottom: 25px;
+    color: #f0fdfa;
+}
+
+/* ---------- Buttons ---------- */
+.primary-btn,
+.cta-btn {
+    display: inline-block;
+    padding: 12px 23px;
+    border: 1px solid var(--primary);
+    border-radius: 7px;
+    background: var(--primary);
+    color: var(--white);
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.primary-btn:hover,
+.cta-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.banner .primary-btn {
+    color: var(--primary-dark);
+    background: var(--white);
+    border-color: var(--white);
+}
+
+.banner .primary-btn:hover {
+    background: var(--primary-light);
+}
+
+/* ---------- Common Sections ---------- */
+.section-container {
+    width: 90%;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.section-container > h2,
+.vision h2,
+.difference h2 {
+    margin: 8px 0 15px;
+    color: #173d38;
+    font-size: clamp(27px, 4vw, 36px);
+    line-height: 1.3;
+}
+
+/* ---------- Vision ---------- */
+.vision {
+    max-width: 900px;
+    padding: 10px 0 75px;
+    text-align: center;
+}
+
+.vision p:last-child {
+    color: var(--muted);
+    font-size: 16px;
+}
+
+/* ---------- Impact Cards ---------- */
+.difference {
+    padding: 65px 0 80px;
+    background: var(--background);
+    text-align: center;
+}
+
+.section-description {
+    color: var(--muted);
+}
+
+.difference-boxes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 35px;
+    text-align: left;
+}
+
+.impact-card {
+    padding: 30px 25px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--white);
+    box-shadow: 0 8px 24px rgba(18, 62, 53, 0.05);
+    transition: 0.25s ease;
+}
+
+.impact-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(18, 62, 53, 0.1);
+}
+
+.impact-icon {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 28px;
+}
+
+.impact-card h3 {
+    margin-bottom: 10px;
+    color: #183d37;
+    font-size: 20px;
+}
+
+.impact-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ---------- How It Works ---------- */
+.how-it-works {
+    padding: 75px 0;
+    text-align: center;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    text-align: left;
+}
+
+.step {
+    padding: 15px 20px;
+}
+
+.step-number {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--primary);
+    font-size: 29px;
+    font-weight: 800;
+}
+
+.step h3 {
+    margin-bottom: 8px;
+    font-size: 19px;
+}
+
+.step p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ---------- Student Initiative ---------- */
+.student-section {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 55px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.student-content h2 {
+    margin: 8px 0 18px;
+    color: #173d38;
+    font-size: clamp(27px, 4vw, 36px);
+    line-height: 1.3;
+}
+
+.student-content p {
+    margin-bottom: 16px;
+    color: var(--muted);
+}
+
+.student-visual {
+    min-height: 280px;
+    padding: 40px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: linear-gradient(140deg, #e3f6f0, #f3faf6);
+    text-align: center;
+}
+
+.visual-heart {
+    color: var(--primary);
+    font-size: 75px;
+    line-height: 1.2;
+}
+
+.student-visual h3 {
+    margin: 15px 0 8px;
+    color: #173d38;
+    font-size: 22px;
+}
+
+.student-visual p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ---------- Call to Action ---------- */
+.cta-section {
+    padding: 65px 20px;
+    background: var(--primary-dark);
+    color: var(--white);
+    text-align: center;
+}
+
+.cta-section h2 {
+    margin-bottom: 12px;
+    font-size: clamp(28px, 4vw, 38px);
+}
+
+.cta-section p {
+    max-width: 650px;
+    margin: 0 auto 25px;
+    color: #e0f2ef;
+}
+
+.cta-btn {
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--primary-dark);
+}
+
+.cta-btn:hover {
+    background: var(--primary-light);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    padding: 55px 5% 0;
+    background: #102d2a;
+    color: var(--white);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 35px;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.footer-logo {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: var(--white);
+    font-size: 22px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.footer-brand p {
+    max-width: 300px;
+    color: #c3d5d2;
+    font-size: 14px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.footer-links h3 {
+    margin-bottom: 7px;
+    font-size: 15px;
+}
+
+.footer-links a {
+    color: #c3d5d2;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    color: #c3d5d2;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* ---------- Responsive Navigation ---------- */
+@media (max-width: 850px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex: auto;
+        width: 100%;
+        margin-left: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .nav-links.nav-open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 11px 5px;
+        border-top: 1px solid var(--border);
+    }
+
+    .nav-links a.active {
+        border-bottom: none;
+    }
+
+    .difference-boxes,
+    .steps {
+        gap: 15px;
+    }
+
+    .impact-card {
+        padding: 22px 17px;
+    }
+}
+
+/* ---------- Mobile Layout ---------- */
+@media (max-width: 650px) {
+    .about-heading {
+        padding: 45px 20px 30px;
+    }
+
+    .banner {
+        width: 92%;
+        min-height: 390px;
+        margin-bottom: 40px;
+    }
+
+    .banner-overlay {
+        background: rgba(4, 38, 34, 0.68);
+    }
+
+    .banner-content {
+        padding: 55px 25px;
+    }
+
+    .vision {
+        padding-bottom: 50px;
+    }
+
+    .difference {
+        padding: 45px 0 55px;
+    }
+
+    .difference-boxes,
+    .steps,
+    .student-section {
+        grid-template-columns: 1fr;
+    }
+
+    .impact-card {
+        padding: 25px;
+    }
+
+    .student-section {
+        gap: 30px;
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+    .student-visual {
+        min-height: 240px;
+    }
+
+    .cta-section {
+        padding: 50px 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}

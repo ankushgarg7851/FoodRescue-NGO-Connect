@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Environment & Sensitive Credentials
+.env
+.env.local
+
+# Temporary & Build files
+tempCodeRunnerFile.*
+*.exe
+Untitled-1.txt
+*.backup.html
+FoodRescue-NGO-Connect/
+
+# OS artifacts
+Thumbs.db
+.DS_Store

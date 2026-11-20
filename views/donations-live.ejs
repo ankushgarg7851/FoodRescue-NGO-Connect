@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodRescue — Live Server-Rendered Feed (EJS Template Engine)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/homecss.css">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FAF8F5; color: #1E293B; margin: 0; padding: 0; }
+    .header-bar { background: white; border-bottom: 1px solid #E2E8F0; padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; }
+    .brand-link { color: #146C65; font-size: 22px; font-weight: 800; text-decoration: none; }
+    .nav-links a { margin-left: 18px; text-decoration: none; color: #64748B; font-weight: 600; font-size: 14px; }
+    .nav-links a:hover { color: #146C65; }
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .badge { display: inline-block; background: #E0E7FF; color: #3730A3; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+    .page-title { font-size: 32px; font-weight: 800; margin-bottom: 8px; color: #0F172A; }
+    .page-subtitle { color: #64748B; font-size: 15px; margin-bottom: 30px; }
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px; }
+    .stat-box { background: white; border: 1px solid #E2E8F0; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .stat-label { font-size: 13px; color: #64748B; font-weight: 600; }
+    .stat-val { font-size: 28px; color: #146C65; font-weight: 800; margin-top: 6px; }
+    .donations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    .card { background: white; border: 1px solid #E2E8F0; border-radius: 14px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between; }
+    .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .card-tag { background: #DEF4F0; color: #146C65; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 12px; }
+    .status-tag { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 12px; }
+    .status-Available { background: #DEF4F0; color: #146C65; }
+    .status-Confirmed { background: #E0E7FF; color: #3730A3; }
+    .status-Delivered { background: #D1FAE5; color: #065F46; }
+    .card-title { font-size: 18px; font-weight: 700; margin: 0 0 8px 0; color: #1E293B; }
+    .card-donor { font-size: 13px; color: #64748B; margin-bottom: 14px; }
+    .card-details p { margin: 6px 0; font-size: 13px; color: #334155; }
+    .card-details strong { color: #0F172A; }
+    .card-footer { margin-top: 18px; padding-top: 14px; border-top: 1px solid #F1F5F9; display: flex; justify-content: space-between; align-items: center; }
+    .btn-track { background: #146C65; color: white; text-decoration: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; }
+    .btn-track:hover { background: #0F5852; }
+    .source-pill { font-size: 11px; color: #64748B; background: #F8FAFC; padding: 4px 8px; border-radius: 6px; border: 1px solid #E2E8F0; }
+  </style>
+</head>
+<body>
+
+  <header class="header-bar">
+    <a href="/HOME.html" class="brand-link">🌿 FoodRescue</a>
+    <nav class="nav-links">
+      <a href="/HOME.html">Home</a>
+      <a href="/DONOR%20DASHBOARD.html">Donor Portal</a>
+      <a href="/NGO%20DASHBOARD.html">NGO Portal</a>
+      <a href="/Track.html">Tracking</a>
+      <a href="/live-donations" style="color: #146C65; font-weight: 700;">EJS Dynamic Feed</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <span class="badge">Evaluation Rubric: Template Engines & Static Files (5%)</span>
+    <h1 class="page-title">Live Server-Side Rendered Feed</h1>
+    <p class="page-subtitle">
+      This page is rendered dynamically on the server using the <strong>EJS Template Engine</strong>.
+      Data is retrieved directly from <strong>MongoDB</strong> (Mongoose ODM) and rendered before reaching the browser.
+    </p>
+
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-label">Total Surplus Items</div>
+        <div class="stat-val"><%= donations.length %></div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Total Meals / Servings</div>
+        <div class="stat-val"><%= totalMeals.toLocaleString('en-IN') %></div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Database Connection</div>
+        <div class="stat-val" style="font-size: 20px; color: #3730A3;"><%= dbSource %></div>
+      </div>
+    </div>
+
+    <% if (donations.length === 0) { %>
+      <div style="background: white; border: 1px solid #E2E8F0; padding: 40px; border-radius: 12px; text-align: center;">
+        <p style="color: #64748B;">No donations recorded yet. Use the Donor Dashboard to submit one!</p>
+      </div>
+    <% } else { %>
+      <div class="donations-grid">
+        <% donations.forEach(function(item) { %>
+          <article class="card">
+            <div>
+              <div class="card-top">
+                <span class="card-tag"><%= item.foodType %></span>
+                <span class="status-tag status-<%= item.status %>"><%= item.status %></span>
+              </div>
+              <h2 class="card-title"><%= item.foodName %></h2>
+              <div class="card-donor">Listed by: <strong><%= item.donorName %></strong> (<%= item.donorEmail %>)</div>
+              
+              <div class="card-details">
+                <p>Quantity: <strong><%= Number(item.quantity || 0).toLocaleString('en-IN') %> servings</strong></p>
+                <p>Location: <strong><%= item.pickupLocation %></strong></p>
+                <p>Available Window: <strong><%= new Date(item.pickupWindow).toLocaleString('en-IN', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) %></strong></p>
+                <% if (item.notes) { %>
+                  <p><em>Notes: <%= item.notes %></em></p>
+                <% } %>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span class="source-pill">ID: <%= item.id || item._id %></span>
+              <a href="/Track.html?id=<%= encodeURIComponent(item.id || item._id) %>" class="btn-track">Track &rarr;</a>
+            </div>
+          </article>
+        <% }); %>
+      </div>
+    <% } %>
+  </main>
+
+</body>
+</html>

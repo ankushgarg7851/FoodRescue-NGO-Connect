@@ -1,0 +1,36 @@
+[
+  {
+    "id": "user-1",
+    "name": "Demo Donor",
+    "email": "donor@foodrescue.org",
+    "password": "password123",
+    "role": "donor",
+    "organization": "Bistro Deluxe",
+    "createdAt": "2026-11-14T13:42:11.732Z"
+  },
+  {
+    "id": "user-2",
+    "name": "Hope Foundation",
+    "email": "hope@ngo.org",
+    "password": "password123",
+    "role": "ngo",
+    "organization": "Hope Relief Trust",
+    "createdAt": "2026-11-14T13:42:11.734Z"
+  },
+  {
+    "id": "usr-1794837482494",
+    "name": "Ankush Garg",
+    "email": "ankushgarg7851@gmail.com",
+    "password": "654321",
+    "role": "ngo",
+    "createdAt": "2026-11-16T13:58:02.494Z"
+  },
+  {
+    "id": "usr-1794837590605",
+    "name": "Ankush Garg",
+    "email": "dsambhav37@gmail.com",
+    "password": "123456",
+    "role": "donor",
+    "createdAt": "2026-11-16T13:59:50.605Z"
+  }
+]

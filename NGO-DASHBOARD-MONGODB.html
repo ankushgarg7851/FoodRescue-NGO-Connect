@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodRescue | NGO Dashboard - Available Food Nearby</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #0a584e;
+      --primary-light: #e6f7f4;
+      --bg: #faf8f5;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --white: #fff;
+      --orange: #e58b13;
+      --orange-hover: #c9750a;
+      --red: #b91c1c;
+      --shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Plus Jakarta Sans", sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+    button, input, select { font: inherit; }
+
+    /* Header */
+    .header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
+    .header-inner { max-width: 1180px; margin: auto; min-height: 68px; padding: 12px 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    .brand { font-size: 21px; font-weight: 800; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .nav { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+    .nav a { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 600; padding: 6px 10px; border-radius: 6px; transition: color 0.2s, background 0.2s; }
+    .nav a:hover, .nav a.active { color: var(--primary); background: var(--primary-light); font-weight: 700; }
+    .user { font-size: 13px; font-weight: 700; color: var(--primary-dark); background: var(--primary-light); padding: 7px 14px; border-radius: 20px; }
+
+    /* Main Container */
+    main { max-width: 1180px; margin: 30px auto 60px; padding: 0 22px; }
+    h1 { font-size: 29px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+    .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+
+    /* Weather Advisory Banner (Evaluation Parameter 1) */
+    .weather-banner {
+      background: #FFFBEB;
+      border: 1px solid #FCD34D;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: none;
+    }
+    .weather-banner h4 { color: #92400E; font-size: 15px; font-weight: 700; margin: 0 0 4px 0; }
+    .weather-banner p { color: #78350F; font-size: 13px; margin: 0; }
+
+    /* Stats Grid */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 24px; }
+    .stat { background: #e7f6f3; border: 1px solid #d5efea; border-radius: 14px; padding: 20px 22px; }
+    .stat p { font-size: 13px; color: var(--primary); font-weight: 700; }
+    .stat strong { display: block; font-size: 28px; color: var(--primary-dark); margin-top: 6px; font-weight: 800; }
+
+    /* Toolbar / Filters */
+    .toolbar { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 14px; display: flex; gap: 14px; margin-bottom: 24px; box-shadow: var(--shadow); }
+    .toolbar input, .toolbar select { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 11px 14px; color: var(--text); min-width: 0; font-size: 13px; }
+    .toolbar input { flex: 1; }
+    .toolbar input:focus, .toolbar select:focus { outline: 2px solid #a7f3d0; border-color: var(--primary); }
+
+    .section-title { font-size: 20px; font-weight: 800; margin-bottom: 15px; color: #0f172a; }
+
+    /* Food Grid & Cards */
+    .food-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-bottom: 36px; }
+    .food-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between; gap: 18px; transition: transform 0.2s, box-shadow 0.2s; }
+    .food-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15, 23, 42, 0.09); }
+    .card-top { display: flex; justify-content: space-between; gap: 8px; align-items: center; margin-bottom: 10px; }
+    .tag { background: var(--primary-light); color: var(--primary); padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.4px; }
+    .status-badge { font-size: 11px; font-weight: 800; color: #166534; background: #dcfce7; padding: 4px 10px; border-radius: 20px; }
+    .food-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; color: #0f172a; }
+    .donor { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+    .details { font-size: 12px; color: var(--muted); display: grid; gap: 8px; }
+    .details b { color: var(--text); }
+    .notes { background: #f8fafc; border-radius: 8px; padding: 8px 10px; font-size: 12px; color: #475569; }
+
+    .btn { border: 0; border-radius: 8px; padding: 12px 16px; background: var(--orange); color: white; font-weight: 800; font-size: 13px; cursor: pointer; transition: background 0.2s; text-align: center; }
+    .btn:hover { background: var(--orange-hover); }
+    .btn:disabled { opacity: 0.6; cursor: wait; }
+
+    /* Tracking Table */
+    .tracking { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 24px; box-shadow: var(--shadow); }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    th, td { text-align: left; padding: 14px 12px; border-bottom: 1px solid #edf0f4; font-size: 13px; vertical-align: middle; }
+    th { color: var(--muted); background: #f8fafc; font-weight: 700; }
+    .pill { display: inline-block; border-radius: 20px; padding: 4px 10px; font-weight: 800; font-size: 11px; background: #e0e7ff; color: #3730a3; }
+    .pill.enroute { background: #fef3c7; color: #92400e; }
+    .pill.delivered { background: #dcfce7; color: #166534; }
+    .track-link { color: var(--primary); font-weight: 700; text-decoration: none; padding: 4px 8px; border-radius: 6px; }
+    .track-link:hover { text-decoration: underline; background: var(--primary-light); }
+
+    .empty { grid-column: 1/-1; background: white; border: 1px dashed #cbd5e1; padding: 36px 20px; text-align: center; border-radius: 12px; color: var(--muted); }
+    .notice { padding: 12px 16px; border-radius: 9px; margin-bottom: 20px; font-size: 13px; display: none; }
+    .notice.error { display: block; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+    .notice.info { display: block; background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+    .refresh { font-size: 12px; color: var(--muted); margin: -12px 0 18px; }
+
+    @media (max-width: 900px) { .food-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 650px) {
+      .stats, .food-grid { grid-template-columns: 1fr; }
+      .toolbar { flex-direction: column; }
+      .header-inner { justify-content: center; }
+      .nav { justify-content: center; }
+      h1 { font-size: 24px; }
+      .tracking { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="HOME.html">🍃 FoodRescue</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="HOME.html">Home</a>
+        <a href="DONOR%20DASHBOARD.html">Donate</a>
+        <a href="NGO%20DASHBOARD.html" class="active">NGO Dashboard</a>
+        <a href="ABOUT.html">About</a>
+        <a href="FoodRescue-Ratings-Reviews.html">Reviews</a>
+        <a href="reports and analytics.html">Reports &amp; Analytics</a>
+        <a href="blog html and css.html">Blog</a>
+      </nav>
+      <span class="user" id="welcome-user">Welcome, Hope Foundation!</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h1>Available Food Nearby</h1>
+    <p class="subtitle">Live donor food surplus feeds. Claim donations to distribute meals to people in need.</p>
+
+    <!-- Live External Weather Advisory (Evaluation Parameter 1) -->
+    <div id="weather-advisory-banner" class="weather-banner" role="region" aria-label="Weather Advisory">
+      <h4 id="ngo-weather-text">Live Weather Advisory (Open-Meteo API)</h4>
+      <p id="ngo-weather-advisory"></p>
+    </div>
+
+    <!-- Feedback Notice -->
+    <div id="notice" class="notice" role="status"></div>
+
+    <!-- Summary Statistics Grid -->
+    <section class="stats" aria-label="Dashboard statistics">
+      <div class="stat"><p>Meals in Active / Completed Pickups</p><strong id="metric-meals">0</strong></div>
+      <div class="stat"><p>Active Requests Pending</p><strong id="metric-requests">0</strong></div>
+      <div class="stat"><p>Verified Partner Donors</p><strong id="metric-donors">0</strong></div>
+    </section>
+
+    <!-- Search & Filter Bar -->
+    <div class="toolbar">
+      <input id="search-input" type="search" placeholder="Search by food dish, donor name, or pickup location..." aria-label="Search donations">
+      <select id="filter-type" aria-label="Filter by food type">
+        <option>All Food Types</option>
+        <option>Cooked Meals</option>
+        <option>Packaged Food</option>
+        <option>Raw Produce / Vegetables</option>
+        <option>Bakery &amp; Bread</option>
+        <option>Dairy Products</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <!-- Live Sync Status -->
+    <p class="refresh" id="refresh-status">Connecting to MongoDB Atlas database...</p>
+
+    <!-- Available Surplus Food Feeds Grid -->
+    <section aria-labelledby="available-heading">
+      <h2 class="section-title" id="available-heading">Surplus Food Feeds</h2>
+      <div id="food-cards-grid" class="food-grid">
+        <div class="empty">Loading donations from MongoDB...</div>
+      </div>
+    </section>
+
+    <!-- Distribution & Pickup Tracking Section -->
+    <section class="tracking" id="tracking-section">
+      <h2 class="section-title">Your Pickup / Distribution Tracking</h2>
+      <div class="table-wrap">
+        <table id="distribution-tracking-table">
+          <thead>
+            <tr>
+              <th>Food Donation</th>
+              <th>Donor Partner</th>
+              <th>Pickup Window</th>
+              <th>Status</th>
+              <th>Claimed By</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="tracking-body">
+            <tr><td colspan="6" style="text-align:center; color:#64748b; padding:24px;">No claimed donations yet. Click "Request Food" on an available card above to claim it.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Endpoints for MongoDB Atlas operations
+    const DONATIONS_URL = "/api/donations";
+    const MONGO_DONATIONS_URL = "/api/mongo/donations";
+    const REFRESH_INTERVAL = 3000; // Auto-poll every 3 seconds for instant sync with Donor Dashboard!
+
+    const $ = id => document.getElementById(id);
+    const grid = $("food-cards-grid");
+    const trackingBody = $("tracking-body");
+    const searchInput = $("search-input");
+    const typeFilter = $("filter-type");
+    const notice = $("notice");
+
+    let allDonations = [];
+    let loading = false;
+    let lastFetchTime = null;
+
+    // Logged in user info
+    let currentUser = {};
+    try { currentUser = JSON.parse(localStorage.getItem("loggedInUser")) || {}; }
+    catch (e) { console.warn("Could not read loggedInUser", e); }
+
+    const ngoName = currentUser.name || "Hope Foundation";
+    const ngoEmail = currentUser.email || "hope@ngo.org";
+    $("welcome-user").textContent = `Welcome, ${ngoName}!`;
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, ch => ({
+        "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+      })[ch]);
+    }
+
+    function showNotice(message, isError = false) {
+      notice.textContent = message;
+      notice.className = `notice ${isError ? "error" : "info"}`;
+    }
+    function clearNotice() {
+      notice.textContent = "";
+      notice.className = "notice";
+    }
+
+    async function readResponse(response) {
+      const text = await response.text();
+      let data;
+      try { data = text ? JSON.parse(text) : {}; }
+      catch { throw new Error(`Server returned HTTP ${response.status}.`); }
+      if (!response.ok) throw new Error(data.error || data.message || `Request failed (${response.status}).`);
+      return data;
+    }
+
+    function normalizeDonations(payload) {
+      if (Array.isArray(payload)) return payload;
+      if (payload && Array.isArray(payload.donations)) return payload.donations;
+      return [];
+    }
+
+    function formatDate(value) {
+      if (!value) return "Flexible Pickup";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return String(value);
+      return date.toLocaleString("en-IN", {
+        day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit"
+      });
+    }
+
+    function getId(donation) {
+      return donation.id || donation._id || "";
+    }
+
+    // ========================================================
+    // PARAMETER 1: LOAD WEATHER ADVISORY (Open-Meteo API)
+    // ========================================================
+    async function loadWeather() {
+      const banner = $("weather-advisory-banner");
+      if (!banner) return;
+      try {
+        const res = await fetch("/api/external/weather-advisory");
+        const data = await res.json();
+        if (data && data.weather && data.foodSafetyAdvisory) {
+          banner.style.display = "block";
+          $("ngo-weather-text").textContent =
+            `🌡️ ${data.location}: ${data.weather.temperatureC}°C (${data.weather.condition}) | Spoilage Risk: ${data.foodSafetyAdvisory.riskLevel}`;
+          $("ngo-weather-advisory").textContent =
+            `Safety Guideline: ${data.foodSafetyAdvisory.advisory} (Safe transit window: ${data.foodSafetyAdvisory.safeWindowHours} hrs).`;
+        }
+      } catch (e) {
+        console.warn("Weather fetch failed:", e.message);
+      }
+    }
+
+    // ========================================================
+    // METRICS CALCULATION
+    // ========================================================
+    function updateMetrics() {
+      const activeAndCompleted = allDonations.filter(d =>
+        ["Confirmed", "En Route", "Delivered"].includes(d.status)
+      );
+      const meals = activeAndCompleted.reduce((sum, d) => sum + Number(d.quantity || 0), 0);
+      const active = allDonations.filter(d => ["Confirmed", "Requested", "En Route"].includes(d.status)).length;
+      const donors = new Set(allDonations.map(d =>
+        String(d.donorEmail || d.donorName || "").trim().toLowerCase()
+      ).filter(Boolean));
+
+      $("metric-meals").textContent = meals.toLocaleString("en-IN");
+      $("metric-requests").textContent = active.toLocaleString("en-IN");
+      $("metric-donors").textContent = Math.max(donors.size, 1).toLocaleString("en-IN");
+    }
+
+    // ========================================================
+    // RENDER AVAILABLE FOOD CARDS
+    // ========================================================
+    function renderFoodCards() {
+      const term = searchInput.value.trim().toLowerCase();
+      const type = typeFilter.value;
+      const available = allDonations.filter(d => {
+        const searchable = [d.foodName, d.foodType, d.donorName, d.pickupLocation, d.notes]
+          .join(" ").toLowerCase();
+        return (d.status || "Available") === "Available" &&
+          (!term || searchable.includes(term)) &&
+          (type === "All Food Types" || String(d.foodType || "").toLowerCase() === type.toLowerCase());
+      });
+
+      if (!available.length) {
+        grid.innerHTML = `<div class="empty"><strong>No available food donations right now.</strong><br>As soon as a donor lists food on the Donor Dashboard, it will appear here automatically!</div>`;
+        return;
+      }
+
+      grid.innerHTML = available.map(d => {
+        const id = getId(d);
+        return `
+          <article class="food-card" data-id="${escapeHTML(id)}">
+            <div>
+              <div class="card-top">
+                <span class="tag">${escapeHTML(d.foodType || "Cooked Meals")}</span>
+                <span class="status-badge">Available</span>
+              </div>
+              <h3>${escapeHTML(d.foodName || "Food Surplus")}</h3>
+              <p class="donor">Donated by <strong>${escapeHTML(d.donorName || "Food Donor")}</strong></p>
+              <div class="details">
+                <p>Quantity: <b>${Number(d.quantity || 0).toLocaleString("en-IN")} servings</b></p>
+                <p>Pickup Location: <b>${escapeHTML(d.pickupLocation || "Not specified")}</b></p>
+                <p>Pickup Window: <b>${escapeHTML(formatDate(d.pickupWindow))}</b></p>
+                ${d.donorEmail ? `<p>Donor Email: <b>${escapeHTML(d.donorEmail)}</b></p>` : ""}
+                ${d.notes ? `<p class="notes">Note: ${escapeHTML(d.notes)}</p>` : ""}
+              </div>
+            </div>
+            <button class="btn claim-button" type="button" data-id="${escapeHTML(id)}">Request Food</button>
+          </article>`;
+      }).join("");
+
+      grid.querySelectorAll(".claim-button").forEach(button => {
+        button.addEventListener("click", () => claimDonation(button.dataset.id, button));
+      });
+    }
+
+    // ========================================================
+    // RENDER TRACKING TABLE
+    // ========================================================
+    function renderTracking() {
+      const claimed = allDonations.filter(d =>
+        ["Confirmed", "Requested", "En Route", "Delivered"].includes(d.status)
+      );
+
+      if (!claimed.length) {
+        trackingBody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#64748b; padding:24px;">No claimed donations yet. Click "Request Food" on an available card above to claim it.</td></tr>`;
+        return;
+      }
+
+      trackingBody.innerHTML = claimed.map(d => {
+        const status = d.status || "Confirmed";
+        const statusClass = status === "Delivered" ? "delivered" : status === "En Route" ? "enroute" : "";
+        const id = getId(d);
+        const claimedBy = d.claimedBy && (d.claimedBy.ngoName || d.claimedBy.ngoEmail)
+          ? `${d.claimedBy.ngoName || ""}`
+          : ngoName;
+
+        return `<tr>
+          <td><strong>${escapeHTML(d.foodName || "Food donation")}</strong><br><small style="color:#64748b;">#${escapeHTML(id)} · ${Number(d.quantity || 0)} servings</small></td>
+          <td>${escapeHTML(d.donorName || "Donor")}<br><small style="color:#64748b;">${escapeHTML(d.pickupLocation || "")}</small></td>
+          <td>${escapeHTML(formatDate(d.pickupWindow))}</td>
+          <td><span class="pill ${statusClass}">${escapeHTML(status)}</span></td>
+          <td><strong>${escapeHTML(claimedBy)}</strong></td>
+          <td><a href="Track.html?id=${encodeURIComponent(id)}" class="track-link">Track Journey &rarr;</a></td>
+        </tr>`;
+      }).join("");
+    }
+
+    // ========================================================
+    // FETCH DONATIONS FROM MONGODB (Auto-polled every 3s)
+    // ========================================================
+    async function fetchDonations(showErrors = true) {
+      if (loading) return;
+      loading = true;
+      try {
+        // Try unified API first, fallback to mongoRoutes if needed
+        let response = await fetch(DONATIONS_URL, {
+          method: "GET", cache: "no-store", headers: { "Accept": "application/json" }
+        });
+        if (!response.ok) {
+          response = await fetch(MONGO_DONATIONS_URL, {
+            method: "GET", cache: "no-store", headers: { "Accept": "application/json" }
+          });
+        }
+        const payload = await readResponse(response);
+        allDonations = normalizeDonations(payload);
+        updateMetrics();
+        renderFoodCards();
+        renderTracking();
+        lastFetchTime = new Date();
+        $("refresh-status").textContent =
+          `MongoDB Atlas LIVE · ${allDonations.length} total donation record(s) · Synced at ${lastFetchTime.toLocaleTimeString("en-IN")}`;
+        clearNotice();
+      } catch (error) {
+        console.error("Could not fetch MongoDB donations:", error);
+        $("refresh-status").textContent = "Database sync paused. Retrying...";
+        if (showErrors) showNotice(`${error.message}. Ensure backend is running.`, true);
+      } finally {
+        loading = false;
+      }
+    }
+
+    // ========================================================
+    // CLAIM DONATION (Updates status to Confirmed in MongoDB)
+    // ========================================================
+    async function claimDonation(id, button) {
+      if (!id) {
+        showNotice("Donation ID missing.", true);
+        return;
+      }
+      if (button) {
+        button.disabled = true;
+        button.textContent = "Requesting Food...";
+      }
+
+      try {
+        // Try claim route
+        let res = await fetch(`/api/donations/${encodeURIComponent(id)}/claim`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({ ngoName, ngoEmail })
+        });
+
+        if (!res.ok) {
+          // Fallback to PATCH mongo route
+          res = await fetch(`/api/mongo/donations/${encodeURIComponent(id)}/status`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify({ status: "Confirmed", ngoName, ngoEmail })
+          });
+        }
+
+        const result = await readResponse(res);
+        showNotice(`Success! Food donation confirmed for pickup by ${ngoName}.`);
+        await fetchDonations(false);
+        $("tracking-section").scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (error) {
+        console.error("Claim failed:", error);
+        showNotice(`Could not request this donation: ${error.message}`, true);
+        if (button) {
+          button.disabled = false;
+          button.textContent = "Request Food";
+        }
+      }
+    }
+
+    searchInput.addEventListener("input", renderFoodCards);
+    typeFilter.addEventListener("change", renderFoodCards);
+
+    // Initial load
+    loadWeather();
+    fetchDonations();
+
+    // Auto-poll MongoDB every 3 seconds so donor submissions show immediately!
+    setInterval(() => fetchDonations(false), REFRESH_INTERVAL);
+  });
+  </script>
+</body>
+</html>

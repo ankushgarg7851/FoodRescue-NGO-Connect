@@ -1,0 +1,813 @@
+[
+  {
+    "id": "FR-1795147546111-950",
+    "foodName": "something",
+    "foodType": "Other",
+    "quantity": 100,
+    "pickupWindow": "2026-11-21T04:05:00.000Z",
+    "pickupLocation": "BMU Munjal University",
+    "destinationLocation": "Community Kitchen, Sector 14, Delhi NCR",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-20T04:05:46.111Z",
+        "completed": true,
+        "_id": "6affc71af1a06b202746ca72"
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6affc71af1a06b202746ca73"
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6affc71af1a06b202746ca74"
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6affc71af1a06b202746ca75"
+      }
+    ],
+    "_id": "6affc71af1a06b202746ca71",
+    "createdAt": "2026-11-20T04:05:46.111Z",
+    "updatedAt": "2026-11-20T04:05:46.111Z",
+    "__v": 0
+  },
+  {
+    "id": "FR-1795147082596-385",
+    "foodName": "pizza",
+    "foodType": "Raw Produce / Vegetables",
+    "quantity": 100,
+    "pickupWindow": "2026-12-01T03:56:00.000Z",
+    "pickupLocation": "bml",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-20T03:58:02.596Z",
+        "completed": true
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false
+      }
+    ],
+    "createdAt": "2026-11-20T03:58:02.596Z"
+  },
+  {
+    "id": "FR-1795146366415-165",
+    "foodName": "Pizza",
+    "foodType": "Packaged Food",
+    "quantity": 50,
+    "pickupWindow": "2026-11-21T03:45:00.000Z",
+    "pickupLocation": "BMU Munjal University",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-20T03:46:06.415Z",
+        "completed": true
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false
+      }
+    ],
+    "createdAt": "2026-11-20T03:46:06.415Z"
+  },
+  {
+    "id": "FR-1795146048188-774",
+    "foodName": "Pizza",
+    "foodType": "Packaged Food",
+    "quantity": 100,
+    "pickupWindow": "2026-11-21T03:40:00.000Z",
+    "pickupLocation": "BMU Munjal University",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-20T03:40:48.805Z",
+        "completed": true
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false
+      }
+    ],
+    "createdAt": "2026-11-20T03:40:52.043Z"
+  },
+  {
+    "id": "FR-1795145992460-382",
+    "foodName": "Veg biryani",
+    "foodType": "Cooked Meals",
+    "quantity": 10,
+    "pickupWindow": "2026-11-21T03:36:00.000Z",
+    "pickupLocation": "BMU Munjal University",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-20T03:39:52.460Z",
+        "completed": true
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false
+      }
+    ],
+    "createdAt": "2026-11-20T03:39:52.460Z"
+  },
+  {
+    "id": "FR-1795140888265-613",
+    "foodName": "rajma chawal",
+    "foodType": "Packaged Food",
+    "quantity": 100,
+    "pickupWindow": "2026-11-21T02:14:00.000Z",
+    "pickupLocation": "BMU Munjal University",
+    "destinationLocation": "Community Kitchen, Sector 14, Delhi NCR",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-20T02:14:48.265Z",
+        "completed": true,
+        "_id": "6affad18983c434aced230bf"
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6affad18983c434aced230c0"
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6affad18983c434aced230c1"
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6affad18983c434aced230c2"
+      }
+    ],
+    "_id": "6affad18983c434aced230be",
+    "createdAt": "2026-11-20T02:14:48.265Z",
+    "updatedAt": "2026-11-20T02:14:48.265Z",
+    "__v": 0
+  },
+  {
+    "id": "FR-1795140159664-730",
+    "foodName": "Pulao",
+    "foodType": "Cooked Meals",
+    "quantity": 12,
+    "pickupWindow": "2026-11-21T02:02:00.000Z",
+    "pickupLocation": "BMU Munjal University",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-20T02:02:39.664Z",
+        "completed": true,
+        "_id": "6affaa3f4c5b2c9144a49bbe"
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6affaa3f4c5b2c9144a49bbf"
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6affaa3f4c5b2c9144a49bc0"
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6affaa3f4c5b2c9144a49bc1"
+      }
+    ],
+    "_id": "6affaa3f4c5b2c9144a49bbd",
+    "createdAt": "2026-11-20T02:02:39.664Z",
+    "updatedAt": "2026-11-20T02:02:39.664Z",
+    "__v": 0
+  },
+  {
+    "id": "FR-1795138427128-582",
+    "foodName": "Pizza",
+    "foodType": "Cooked Meals",
+    "quantity": 100,
+    "pickupWindow": "2026-11-21T01:33:00.000Z",
+    "pickupLocation": "BMU Munjal University",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-20T01:33:47.128Z",
+        "completed": true,
+        "_id": "6affa37b2abd5fe11b5278b0"
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6affa37b2abd5fe11b5278b1"
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6affa37b2abd5fe11b5278b2"
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6affa37b2abd5fe11b5278b3"
+      }
+    ],
+    "_id": "6affa37b2abd5fe11b5278af",
+    "createdAt": "2026-11-20T01:33:47.128Z",
+    "updatedAt": "2026-11-20T01:33:47.128Z",
+    "__v": 0
+  },
+  {
+    "id": "FR-1795118123919-254",
+    "foodName": "rajma chawal",
+    "foodType": "Packaged Food",
+    "quantity": 12,
+    "pickupWindow": "2026-11-20T19:55:00.000Z",
+    "pickupLocation": "BMU Munjal University",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Confirmed",
+    "claimedBy": {
+      "ngoName": "ankushgarg",
+      "ngoEmail": "ankushgarg78@gmail.com",
+      "claimedAt": "2026-11-19T19:55:42.712Z"
+    },
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-19T19:55:23.919Z",
+        "completed": true,
+        "_id": "6aff542bafb19fda0fa34ee3"
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": "2026-11-19T19:55:42.887Z",
+        "completed": true,
+        "_id": "6aff542bafb19fda0fa34ee4"
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6aff542bafb19fda0fa34ee5"
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6aff542bafb19fda0fa34ee6"
+      }
+    ],
+    "_id": "6aff542bafb19fda0fa34ee2",
+    "createdAt": "2026-11-19T19:55:23.919Z",
+    "updatedAt": "2026-11-19T19:55:23.919Z",
+    "__v": 0
+  },
+  {
+    "id": "FR-1795117896081-970",
+    "foodName": "Live Test Paneer Pulav",
+    "foodType": "Cooked Meals",
+    "quantity": 45,
+    "pickupWindow": "2026-11-19T22:51:36.011Z",
+    "pickupLocation": "Cyber Hub, Gurugram",
+    "notes": "Testing live sync between Donor and NGO Dashboard",
+    "donorName": "Test Donor Grand Hotel",
+    "donorEmail": "grand@hotel.com",
+    "status": "Confirmed",
+    "claimedBy": {
+      "ngoName": "Hope Foundation",
+      "ngoEmail": "hope@ngo.org",
+      "claimedAt": "2026-11-19T19:51:47.614Z"
+    },
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-19T19:51:36.081Z",
+        "completed": true,
+        "_id": "6aff534826c224c08f70cb5e"
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": "2026-11-19T19:51:47.899Z",
+        "completed": true,
+        "_id": "6aff534826c224c08f70cb5f"
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6aff534826c224c08f70cb60"
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6aff534826c224c08f70cb61"
+      }
+    ],
+    "_id": "6aff534826c224c08f70cb5d",
+    "createdAt": "2026-11-19T19:51:36.081Z",
+    "updatedAt": "2026-11-19T19:51:36.081Z",
+    "__v": 0
+  },
+  {
+    "id": "FR-1795116528596-894",
+    "foodName": "Pizza",
+    "foodType": "Raw Produce / Vegetables",
+    "quantity": 10,
+    "pickupWindow": "2026-11-20T19:28:00.000Z",
+    "pickupLocation": "BMU Munjal University",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-19T19:28:48.596Z",
+        "completed": true,
+        "_id": "6aff4df0fd5c3721968a38fa"
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6aff4df0fd5c3721968a38fb"
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6aff4df0fd5c3721968a38fc"
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6aff4df0fd5c3721968a38fd"
+      }
+    ],
+    "_id": "6aff4df0fd5c3721968a38f9",
+    "createdAt": "2026-11-19T19:28:48.596Z",
+    "updatedAt": "2026-11-19T19:28:48.596Z",
+    "__v": 0
+  },
+  {
+    "id": "FR-1795083500844-147",
+    "foodName": "Pulao",
+    "foodType": "Cooked Meals",
+    "quantity": 12,
+    "pickupWindow": "2026-11-20T10:17:00.000Z",
+    "pickupLocation": "BMU",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-19T10:18:20.844Z",
+        "completed": true,
+        "_id": "6afeccec4b8cbda6a024a79f"
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6afeccec4b8cbda6a024a7a0"
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6afeccec4b8cbda6a024a7a1"
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6afeccec4b8cbda6a024a7a2"
+      }
+    ],
+    "_id": "6afeccec4b8cbda6a024a79e",
+    "createdAt": "2026-11-19T10:18:20.844Z",
+    "updatedAt": "2026-11-19T10:18:20.844Z",
+    "__v": 0
+  },
+  {
+    "id": "FR-1795083104383-291",
+    "foodName": "Veg b",
+    "foodType": "Cooked Meals",
+    "quantity": 16,
+    "pickupWindow": "2026-11-20T10:11:00.000Z",
+    "pickupLocation": "BMU Munjal University",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-19T10:11:44.383Z",
+        "completed": true,
+        "_id": "6afecb604b8cbda6a024a798"
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6afecb604b8cbda6a024a799"
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6afecb604b8cbda6a024a79a"
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6afecb604b8cbda6a024a79b"
+      }
+    ],
+    "_id": "6afecb604b8cbda6a024a797",
+    "createdAt": "2026-11-19T10:11:44.383Z",
+    "updatedAt": "2026-11-19T10:11:44.383Z",
+    "__v": 0
+  },
+  {
+    "id": "FR-1795082137095-591",
+    "foodName": "Veg biryani",
+    "foodType": "Packaged Food",
+    "quantity": 12,
+    "pickupWindow": "2026-11-20T09:55:00.000Z",
+    "pickupLocation": "BMU Munjal University",
+    "notes": "",
+    "donorName": "ankushgarg",
+    "donorEmail": "ankushgarg78@gmail.com",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-19T09:55:37.095Z",
+        "completed": true,
+        "_id": "6afec7994b8cbda6a024a791"
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6afec7994b8cbda6a024a792"
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up / En Route",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6afec7994b8cbda6a024a793"
+      },
+      {
+        "step": 4,
+        "title": "Delivered & Distributed",
+        "description": "Meals safely served to community.",
+        "timestamp": null,
+        "completed": false,
+        "_id": "6afec7994b8cbda6a024a794"
+      }
+    ],
+    "_id": "6afec7994b8cbda6a024a790",
+    "createdAt": "2026-11-19T09:55:37.095Z",
+    "updatedAt": "2026-11-19T09:55:37.095Z",
+    "__v": 0
+  },
+  {
+    "id": "FR-1794850147884-177",
+    "foodName": "Test Verification Kheer",
+    "foodType": "Cooked Meals",
+    "quantity": 25,
+    "pickupWindow": "2026-11-16T20:29:07.847Z",
+    "pickupLocation": "Campus Hall",
+    "notes": "",
+    "donorName": "Test Donor",
+    "donorEmail": "test@donor.org",
+    "status": "Available",
+    "claimedBy": null,
+    "trackingTimeline": [
+      {
+        "step": 1,
+        "title": "Donation Created",
+        "description": "Food surplus logged by donor.",
+        "timestamp": "2026-11-16T17:29:07.884Z",
+        "completed": true
+      },
+      {
+        "step": 2,
+        "title": "Pickup Confirmed",
+        "description": "NGO accepted the food rescue request.",
+        "timestamp": null,
+        "completed": false
+      },
+      {
+        "step": 3,
+        "title": "Food Picked Up",
+        "description": "Volunteer has collected the food.",
+        "timestamp": null,
+        "completed": false
+      },
+      {
+        "step": 4,
+        "title": "Delivered",
+        "description": "Surplus meals distributed to community.",
+        "timestamp": null,
+        "completed": false
+      }
+    ],
+    "createdAt": "2026-11-16T17:29:07.884Z",
+    "storageSource": "local-json"
+  },
+  {
+    "id": "FR-1001",
+    "foodName": "Basmati Rice & Dal Combo",
+    "foodType": "Cooked Meals",
+    "quantity": 80,
+    "pickupWindow": "2026-11-16T15:27:41.148Z",
+    "pickupLocation": "Grand Palace Hotel, Connaught Place",
+    "notes": "Packed in heated food pans. Vegetarian, no onion/garlic options included.",
+    "donorName": "Grand Palace Hotel",
+    "donorEmail": "grandpalace@donors.org",
+    "status": "Confirmed",
+    "claimedBy": {
+      "ngoName": "ankushgarg",
+      "ngoEmail": "ankushgarg78@gmail.com",
+      "claimedAt": "2026-11-19T19:54:46.444Z"
+    }
+  },
+  {
+    "id": "FR-1002",
+    "foodName": "Freshly Baked Breads & Pastries",
+    "foodType": "Bakery & Bread",
+    "quantity": 40,
+    "pickupWindow": "2026-11-16T18:27:41.149Z",
+    "pickupLocation": "Golden Crust Bakery, Sector 14",
+    "notes": "Fresh whole-wheat loaves, croissants and dinner rolls.",
+    "donorName": "Golden Crust Bakery",
+    "donorEmail": "goldencrust@donors.org",
+    "status": "Delivered"
+  },
+  {
+    "id": "FR-1003",
+    "foodName": "Cold Sandwiches & Fruit Boxes",
+    "foodType": "Packaged Food",
+    "quantity": 120,
+    "pickupWindow": "2026-11-16T16:27:41.149Z",
+    "pickupLocation": "Corporate Canteen Services, Cyber City",
+    "notes": "Individually wrapped sandwiches and cut seasonal fruit.",
+    "donorName": "Corporate Canteen",
+    "donorEmail": "corporate@canteen.org",
+    "status": "Available"
+  },
+  {
+    "id": "FR-1004",
+    "foodName": "Warm Biryani Casserole",
+    "foodType": "Cooked Meals",
+    "quantity": 65,
+    "pickupWindow": "2026-11-16T14:27:41.149Z",
+    "pickupLocation": "Taj Residency Banquets, Sector 29",
+    "notes": "Fresh party surplus, prepared 2 hours ago. Kept warm.",
+    "donorName": "Taj Residency",
+    "donorEmail": "banquets@tajresidency.com",
+    "status": "Confirmed",
+    "claimedBy": {
+      "ngoName": "Hope Foundation",
+      "ngoEmail": "hope@ngo.org",
+      "claimedAt": "2026-11-16T13:27:41.149Z"
+    }
+  },
+  {
+    "id": "FR-1005",
+    "foodName": "Apples, Oranges & Bananas",
+    "foodType": "Raw Produce / Vegetables",
+    "quantity": 200,
+    "pickupWindow": "2026-11-17T13:27:41.149Z",
+    "pickupLocation": "Wholesale Harvest Corp, Mandi Hub",
+    "notes": "Fresh farm surplus, perfect for community distribution.",
+    "donorName": "Wholesale Harvest Corp",
+    "donorEmail": "harvest@wholesale.com",
+    "status": "Available"
+  }
+]

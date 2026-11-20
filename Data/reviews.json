@@ -1,0 +1,36 @@
+[
+  {
+    "id": "rev-1794849668680",
+    "name": "Ankush",
+    "ngo": "FoodRescue",
+    "rating": 5,
+    "text": "best website",
+    "date": "2026-11-16",
+    "createdAt": "2026-11-16T17:21:08.680Z"
+  },
+  {
+    "id": "rev-1794848966550",
+    "name": "Ankush Garg",
+    "ngo": "FoodRescue",
+    "rating": 5,
+    "text": "Amazing initiative! The surplus food was picked up on time and fed 50 people.",
+    "date": "2026-11-16",
+    "createdAt": "2026-11-16T17:09:26.550Z"
+  },
+  {
+    "id": "review-1",
+    "name": "Aarav Mehta",
+    "ngo": "FoodRescue",
+    "rating": 5,
+    "date": "2026-10-14",
+    "text": "The team communicated clearly and coordinated the food collection smoothly. It was reassuring to know the surplus meals could reach families who needed them."
+  },
+  {
+    "id": "review-2",
+    "name": "Priya Sharma",
+    "ngo": "FoodRescue",
+    "rating": 5,
+    "date": "2026-10-08",
+    "text": "A meaningful initiative. The volunteers were kind, organised, and careful about distributing the food promptly."
+  }
+]
