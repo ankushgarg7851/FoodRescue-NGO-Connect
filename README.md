@@ -4,6 +4,18 @@ A production-grade Node.js and Express backend for **FoodRescue NGO Connect**, c
 
 ---
 
+## 👥 Team Members Contribution & Page Ownership Matrix
+
+| Team Member | GitHub Username | Assigned Pages & Modules | Files Owned & Authored | Key Responsibilities |
+|---|---|---|---|---|
+| **Ankush Garg** | [`@ankushgarg7851`](https://github.com/ankushgarg7851) | **Donor Dashboard, Auth/Login & Full-Stack Backend Architecture** | `DONOR DASHBOARD.html`<br>`donor-dashboard.js`<br>`login.html` / `login2.html`<br>`login.js` / `login2.CSS`<br>`signup page.html`<br>`server.js`<br>`models/Donation.js`<br>`models/User.js`<br>`models/Review.js`<br>`routes/apiRoutes.js`<br>`routes/externalRoutes.js`<br>`routes/mongoRoutes.js`<br>`routes/jsonRoutes.js`<br>`seed.js`, `check-db.js`<br>`views/donations-live.ejs` | **Lead Full-Stack Architect:** Node.js/Express server setup, MongoDB Atlas Cloud Database modeling, Open-Meteo Weather API integration, and full-stack real-time data sync across all modules. |
+| **Parth Gupta** | [`@ParthlGupta`](https://github.com/ParthlGupta) | **NGO Dashboard & Claiming Portal** | `NGO DASHBOARD.html`<br>`NGO-DASHBOARD-MONGODB.html`<br>`ngo-dashboard.js`<br>`NGOD.css` | **NGO Portal Owner:** Surplus food feeds grid, food type filter UI, and "Request Food" claiming workflow interface. |
+| **Hrishit Shukla** | [`@shuklahrishit-cmyk`](https://github.com/shuklahrishit-cmyk) | **Home Page & Community Ratings & Reviews** | `HOME.html`<br>`homecss.css`<br>`FoodRescue-Ratings-Reviews.html`<br>`FoodRescue-Ratings-Reviews.css`<br>`reviews.js` | **Home & Reviews Owner:** Landing hero section, platform impact showcase, community reviews feed, and interactive 5-star rating selector. |
+| **Abhinav Bharti** | [`@abhinavbharti7841`](https://github.com/abhinavbharti7841) | **Reports & Analytics & Live Journey Tracking** | `reports and analytics.html`<br>`reports.css`<br>`reports.js`<br>`Track.html`<br>`track.js`<br>`track.css` | **Analytics & Tracking Owner:** Community impact metrics, category breakdown bars, donation audit log UI, and 4-step delivery progress tracker. |
+| **Sambhav** | [`@dsambhav37`](https://github.com/dsambhav37) | **Blog, About Page & Mission Content** | `blog html and css.html`<br>`blog.js`<br>`ABOUT.html`<br>`about.css`<br>`about.js`<br>`style.css` | **Content & About Owner:** Educational food rescue articles, organization story, mission & vision pages, and core styling assets. |
+
+---
+
 ## 📋 Evaluation Parameters Coverage Matrix
 
 | # | Evaluation Parameter | Implementation Details | Endpoint / Files |
